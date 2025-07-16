@@ -101,164 +101,43 @@
                     
                     <div class="donation-benefits">
                         <h3>Why Donate to Us?</h3>
-                        <ul>
-                            <li>✅ 90% of funds go directly to programs</li>
-                            <li>✅ Tax-deductible contributions</li>
-                            <li>✅ Transparent financial reporting</li>
-                            <li>✅ Regular impact updates</li>
-                            <li>✅ Multiple ways to give</li>
-                        </ul>
-                    </div>
-
-                    <div class="other-ways">
-                        <h3>Other Ways to Give</h3>
-                        <div class="giving-options">
-                            <div class="giving-option">
-                                <div class="option-icon">🏦</div>
-                                <h4>Bank Transfer</h4>
-                                <p>Direct bank transfers for larger donations</p>
-                            </div>
-                            <div class="giving-option">
-                                <div class="option-icon">💳</div>
-                                <h4>Monthly Giving</h4>
-                                <p>Set up recurring monthly donations</p>
-                            </div>
-                            <div class="giving-option">
-                                <div class="option-icon">🎁</div>
-                                <h4>Memorial Gifts</h4>
-                                <p>Honor loved ones with a memorial donation</p>
-                            </div>
+                        <div class="benefits-list">
+                            <div class="benefit-item">90% of funds go directly to programs</div>
+                            
+                            <div class="benefit-item">Tax-deductible contributions</div>
+                            
+                            <div class="benefit-item">Transparent financial reporting</div>
+                            
+                            <div class="benefit-item">Regular impact updates</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="donation-form-container">
-                    <form class="donation-form">
-                        <div class="form-section">
-                            <h3>Donation Amount</h3>
-                            <div class="amount-options">
-                                <label class="amount-option">
-                                    <input type="radio" name="amount" value="25">
-                                    <span class="amount-btn">$25</span>
-                                </label>
-                                <label class="amount-option">
-                                    <input type="radio" name="amount" value="50">
-                                    <span class="amount-btn">$50</span>
-                                </label>
-                                <label class="amount-option">
-                                    <input type="radio" name="amount" value="100">
-                                    <span class="amount-btn">$100</span>
-                                </label>
-                                <label class="amount-option">
-                                    <input type="radio" name="amount" value="250">
-                                    <span class="amount-btn">$250</span>
-                                </label>
+                    <div class="form-section">
+                        <h3>Easy Payment Options</h3>
+                        <p>Choose your preferred method to donate instantly:</p>
+                        <div class="qr-payment-options">
+                            <div class="qr-option">
+                                <h4>Cash App</h4>
+                                <img src="images/cashAppHOH.png" alt="Cash App QR Code for The House of Humanity" class="qr-code">
+                                <p>Scan with Cash App</p>
                             </div>
-                            <div class="custom-amount">
-                                <label for="custom-amount">Or enter custom amount:</label>
-                                <div class="amount-input">
-                                    <span class="currency">$</span>
-                                    <input type="number" id="custom-amount" name="custom-amount" placeholder="0.00" min="1" step="0.01">
+                            <div class="qr-option">
+                                <h4>PayPal</h4>
+                                <img src="images/Paypal_QR_Code.jfif" alt="PayPal QR Code for The House of Humanity" class="qr-code">
+                                <p>Scan with PayPal App</p>
+                            </div>
+                            <div class="qr-option">
+                                <h4>Apple Pay</h4>
+                                <div class="apple-pay-info">
+                                    <img src="images/Apple_Pay_logo.svg" alt="Apple Pay Logo" class="apple-pay-logo">
+                                    <div class="phone-number">540-872-1873</div>
                                 </div>
+                                <p>Send via Apple Pay</p>
                             </div>
                         </div>
-
-                        <div class="form-section">
-                            <h3>Donation Type</h3>
-                            <div class="donation-type">
-                                <label class="type-option">
-                                    <input type="radio" name="donation-type" value="one-time" checked>
-                                    <span>One-time donation</span>
-                                </label>
-                                <label class="type-option">
-                                    <input type="radio" name="donation-type" value="monthly">
-                                    <span>Monthly recurring</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Your Information</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="first-name">First Name *</label>
-                                    <input type="text" id="first-name" name="first-name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="last-name">Last Name *</label>
-                                    <input type="text" id="last-name" name="last-name" required>
-                                </div>
-                                <div class="form-group full-width">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group full-width">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Payment Information</h3>
-                            <div class="payment-methods">
-                                <div class="payment-method active">
-                                    <span>💳</span> Credit/Debit Card
-                                </div>
-                                <div class="payment-method">
-                                    <span>🏦</span> Bank Transfer
-                                </div>
-                                <div class="payment-method">
-                                    <span>📱</span> PayPal
-                                </div>
-                            </div>
-                            
-                            <div class="card-details">
-                                <div class="form-group full-width">
-                                    <label for="card-number">Card Number *</label>
-                                    <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
-                                </div>
-                                <div class="form-grid">
-                                    <div class="form-group">
-                                        <label for="expiry">Expiry Date *</label>
-                                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cvv">CVV *</label>
-                                        <input type="text" id="cvv" name="cvv" placeholder="123" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <div class="form-options">
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="anonymous" value="yes">
-                                    <span class="checkmark"></span>
-                                    Make this donation anonymous
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="newsletter" value="yes" checked>
-                                    <span class="checkmark"></span>
-                                    Subscribe to our newsletter for updates
-                                </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="terms" value="yes" required>
-                                    <span class="checkmark"></span>
-                                    I agree to the terms and conditions *
-                                </label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-large">
-                            Complete Donation
-                        </button>
-
-                        <div class="security-notice">
-                            <p>🔒 Your payment information is secure and encrypted. We never store your card details.</p>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

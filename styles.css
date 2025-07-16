@@ -111,6 +111,7 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
+    text-align: center;
 }
 
 /* Navigation */
@@ -309,13 +310,22 @@ a:hover {
 .mission {
     padding: 80px 0;
     background: var(--text-light);
+    text-align: center;
 }
 
 .mission-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mission-text {
+    text-align: center;
+    max-width: 800px;
 }
 
 .mission-text h2 {
@@ -326,6 +336,8 @@ a:hover {
 .mission-text p {
     font-size: 1.125rem;
     margin-bottom: var(--spacing-lg);
+    text-align: left;
+    line-height: 1.8;
 }
 
 .mission-stats {
@@ -333,12 +345,16 @@ a:hover {
     padding: var(--spacing-xl);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
+    justify-content: center;
 }
 
 .stat-item {
@@ -386,8 +402,8 @@ a:hover {
 
 .impact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
 }
 
 .impact-card {
@@ -729,15 +745,17 @@ a:hover {
 .donation-form-section {
     padding: 80px 0;
     background: var(--text-light);
+    text-align: center;
 }
 
 .donation-form-container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     background: var(--background-color);
     padding: var(--spacing-xxl);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
+    text-align: center;
 }
 
 .donation-form h3 {
@@ -823,6 +841,158 @@ a:hover {
     color: var(--text-light);
 }
 
+/* QR Payment Options */
+.qr-payment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.qr-option {
+    background: var(--text-light);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-option:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.qr-option h4 {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast);
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+}
+
+.qr-option p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+    font-style: italic;
+}
+
+/* Apple Pay Specific Styles */
+.apple-pay-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: var(--spacing-md) 0;
+    width: 100%;
+}
+
+.apple-pay-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.apple-pay-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.phone-number {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: var(--background-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    letter-spacing: 1px;
+    margin-top: var(--spacing-sm);
+    user-select: all;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.phone-number:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.qr-option::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 0 auto var(--spacing-md);
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .qr-payment-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .qr-code {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .qr-option {
+        padding: var(--spacing-md);
+        min-height: 240px;
+    }
+    
+    .apple-pay-logo {
+        width: 100px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .qr-payment-options {
+        gap: var(--spacing-md);
+    }
+    
+    .qr-option {
+        padding: var(--spacing-md);
+    }
+    
+    .qr-code {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .apple-pay-logo {
+        width: 110px;
+    }
+}
+
 .checkbox-option {
     display: flex;
     align-items: center;
@@ -891,11 +1061,13 @@ a:hover {
     padding: var(--spacing-xxl);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
+    text-align: center;
 }
 
 .contact-form h3 {
     color: var(--primary-color);
     margin-bottom: var(--spacing-xl);
+    text-align: center;
 }
 
 .quick-access {
@@ -1018,10 +1190,16 @@ a:hover {
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 60px;
     margin-bottom: 40px;
+}
+
+.footer-brand {
+    text-align: center;
 }
 
 .footer-brand h3 {
@@ -1036,6 +1214,7 @@ a:hover {
 
 .footer-social {
     display: flex;
+    justify-content: center;
     gap: var(--spacing-md);
 }
 
@@ -1049,9 +1228,16 @@ a:hover {
 }
 
 .footer-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: var(--spacing-xl);
+    text-align: center;
+}
+
+.footer-section {
+    text-align: center;
+    min-width: 150px;
 }
 
 .footer-section h4 {
@@ -1061,10 +1247,30 @@ a:hover {
 
 .footer-section ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer-section ul li {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-sm) 0;
+}
+
+/* Donation Benefits Styling */
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.benefit-item {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    background: var(--text-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-color);
+    font-weight: 500;
 }
 
 .footer-section ul li a {
@@ -1137,6 +1343,14 @@ a:hover {
     }
 }
 
+/* Tablet styles for impact cards */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -1206,6 +1420,27 @@ a:hover {
     
     .payment-methods {
         grid-template-columns: 1fr;
+    }
+    
+    /* Quote section responsive */
+    .quote-content-with-image {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .quote-founder-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .quote-content-with-image blockquote {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
+    .quote-content-with-image cite {
+        text-align: center;
     }
 }
 
@@ -1335,5 +1570,572 @@ a:focus {
     .faq-item {
         background: #2a2a2a;
         color: var(--text-primary);
+    }
+}
+
+/* Meet the Founder Page - Centered Content Styles */
+.founder-profile {
+    padding: 80px 0;
+    background: var(--background-color);
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.profile-image {
+    text-align: center;
+}
+
+.founder-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin: 0 auto;
+}
+
+.profile-text {
+    text-align: center;
+}
+
+.profile-text p:not(.founder-intro) {
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.profile-text h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.profile-text h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.founder-intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.founder-quote-page {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    text-align: center;
+}
+
+.quote-content-with-image {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.quote-image {
+    flex-shrink: 0;
+}
+
+.quote-founder-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--text-light);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.quote-text-section {
+    flex: 1;
+}
+
+.quote-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quote-content blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.quote-content-with-image blockquote {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    position: relative;
+    text-align: left;
+}
+
+.quote-content cite {
+    text-align: center;
+    display: block;
+}
+
+.quote-content-with-image cite {
+    text-align: left;
+    display: block;
+}
+
+.quote-content cite strong {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.quote-content-with-image cite strong {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.quote-spacer {
+    padding: 40px 0;
+    background: var(--background-color);
+}
+
+.founder-background {
+    padding: 80px 0;
+    background: var(--text-light);
+    text-align: center;
+}
+
+.background-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.experience-timeline {
+    text-align: center;
+}
+
+.timeline-item {
+    background: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.timeline-year {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.timeline-content h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.founder-philosophy {
+    padding: 80px 0;
+    background: var(--background-color);
+    text-align: center;
+}
+
+.philosophy-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.philosophy-content > p {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    line-height: 1.8;
+}
+
+.philosophy-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.point {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.point-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.point h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.founder-recognition {
+    padding: 80px 0;
+    background: var(--text-light);
+    text-align: center;
+}
+
+.recognition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.recognition-item {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.recognition-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.recognition-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.personal-message {
+    padding: 80px 0;
+    background: var(--background-color);
+    text-align: center;
+}
+
+.message-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.message-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.message-text {
+    text-align: center;
+}
+
+.message-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signature {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.signature h4 {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+/* Get Involved Section */
+.get-involved {
+    padding: 80px 0 120px 0;
+    background: var(--background-color);
+}
+
+.involvement-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.option-card {
+    background: var(--text-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.option-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.option-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.option-card h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.option-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.option-card .btn {
+    margin-top: var(--spacing-sm);
+}
+
+/* Hero Section Updates */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    padding: 120px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xxl);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.heart-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-placeholder h3 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-placeholder p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.title-main {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.title-sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Mission Section Updates */
+.mission-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xxl);
+}
+
+.mission-card {
+    background: var(--text-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.mission-card h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.mission-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Impact Section Updates */
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xxl);
+}
+
+.stat {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--text-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.stat:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat h3 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.stat p {
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Founder Quote Section */
+.founder-quote {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    text-align: center;
+}
+
+.founder-quote .quote-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.founder-quote blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.founder-quote cite {
+    text-align: center;
+    display: block;
+}
+
+.founder-quote cite strong {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .title-main {
+        font-size: 2.5rem;
+    }
+    
+    .title-sub {
+        font-size: 1.5rem;
+    }
+    
+    .mission-cards,
+    .impact-stats,
+    .involvement-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .hero-placeholder {
+        padding: var(--spacing-xl);
+    }
+    
+    .heart-icon {
+        font-size: 3rem;
+    }
+    
+    .hero-placeholder h3 {
+        font-size: 1.5rem;
     }
 }
