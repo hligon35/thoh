@@ -6,20 +6,23 @@
 }
 
 :root {
-    /* Color Palette - Humanitarian Theme */
-    --primary-color: #2e8b57; /* Sea Green - Hope and Growth */
-    --secondary-color: #4682b4; /* Steel Blue - Trust and Stability */
-    --accent-color: #ff6b35; /* Orange - Energy and Action */
-    --background-color: #f8f9fa; /* Light Gray */
-    --dark-bg: #1a1a1a; /* Dark Background */
-    --text-primary: #333333; /* Dark Gray */
-    --text-secondary: #666666; /* Medium Gray */
+    /* Color Palette - Inspired by THOH Logo */
+    --primary-color: #1dc5c1; /* Teal - Main brand color from logo */
+    --secondary-color: #6b46c1; /* Purple - From secondary logo */
+    --accent-color: #f59e0b; /* Amber - Warm accent */
+    --tertiary-color: #059669; /* Emerald - Supporting green */
+    --background-color: #fafafa; /* Off-white background */
+    --dark-bg: #1f2937; /* Dark slate */
+    --text-primary: #1f2937; /* Dark slate text */
+    --text-secondary: #6b7280; /* Gray text */
     --text-light: #ffffff; /* White */
-    --border-color: #e0e0e0; /* Light Border */
-    --success-color: #28a745; /* Green */
-    --warning-color: #ffc107; /* Yellow */
-    --danger-color: #dc3545; /* Red */
-    --info-color: #17a2b8; /* Cyan */
+    --border-color: #e5e7eb; /* Light border */
+    --success-color: #10b981; /* Emerald success */
+    --warning-color: #f59e0b; /* Amber warning */
+    --danger-color: #ef4444; /* Red danger */
+    --info-color: #3b82f6; /* Blue info */
+    --light-teal: #a7f3d0; /* Light teal for backgrounds */
+    --light-purple: #ddd6fe; /* Light purple for accents */
     
     /* Typography */
     --font-primary: 'Inter', sans-serif;
@@ -135,17 +138,31 @@ a:hover {
     height: 80px;
 }
 
-.nav-logo h2 {
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-logo-main {
+    height: 50px;
+    width: auto;
+    border-radius: var(--radius-sm);
+}
+
+.nav-logo-text h2 {
     font-size: 1.5rem;
     color: var(--primary-color);
     margin: 0;
     font-weight: 700;
 }
 
-.nav-logo span {
+.nav-logo-text span {
     font-size: 0.9rem;
     color: var(--text-secondary);
     font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
@@ -191,7 +208,7 @@ a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--text-light);
     padding: 120px 0 80px;
     text-align: center;
@@ -274,7 +291,7 @@ a:hover {
 }
 
 .btn-primary:hover {
-    background: #1e5f3a;
+    background: #16a085;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -285,7 +302,7 @@ a:hover {
 }
 
 .btn-secondary:hover {
-    background: #2c5c8a;
+    background: #553c9a;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -309,7 +326,7 @@ a:hover {
 /* Mission Section */
 .mission {
     padding: 80px 0;
-    background: var(--text-light);
+    background: linear-gradient(to bottom, var(--text-light), var(--light-teal));
     text-align: center;
 }
 
@@ -539,6 +556,57 @@ a:hover {
 .value-card h4 {
     color: var(--primary-color);
     margin-bottom: var(--spacing-md);
+}
+
+/* Mission Vision Values Section */
+.mvv-section {
+    padding: 80px 0;
+    background: var(--background-color);
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.mvv-card {
+    background: var(--text-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.mvv-card:hover {
+    transform: translateY(-3px);
+}
+
+.mvv-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.mvv-card h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.mvv-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mvv-card ul li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mvv-card ul li:last-child {
+    border-bottom: none;
 }
 
 .programs-section {
@@ -1025,6 +1093,10 @@ a:hover {
     gap: 60px;
 }
 
+.contact-main {
+    text-align: center;
+}
+
 .contact-main h2 {
     color: var(--primary-color);
     margin-bottom: var(--spacing-lg);
@@ -1042,13 +1114,14 @@ a:hover {
 
 .contact-method {
     display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-lg);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
 }
 
 .method-icon {
     font-size: 1.5rem;
-    margin-top: var(--spacing-xs);
 }
 
 .method-details h4 {
@@ -1200,6 +1273,17 @@ a:hover {
 
 .footer-brand {
     text-align: center;
+}
+
+.footer-logos {
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo-secondary {
+    height: 60px;
+    width: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .footer-brand h3 {
