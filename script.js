@@ -600,6 +600,9 @@ function initAnalytics() {
     // Track external link clicks
     document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
+        if (link) {
+            console.log('Link clicked:', link.textContent.trim(), 'href:', link.href, 'hostname:', link.hostname, 'current hostname:', window.location.hostname);
+        }
         if (link && link.hostname !== window.location.hostname) {
             trackEvent('external_link_click', {
                 url: link.href,
@@ -611,11 +614,13 @@ function initAnalytics() {
     // Track donation button clicks
     const donationButtons = document.querySelectorAll('a[href*="donate"], .btn-primary');
     donationButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            console.log('Button clicked:', this.textContent.trim(), 'href:', this.href);
             trackEvent('donation_button_click', {
                 location: this.closest('section')?.className || 'unknown',
                 text: this.textContent.trim()
             });
+            // Don't prevent default navigation
         });
     });
 }
@@ -892,6 +897,8 @@ style.textContent = animationCSS;
 document.head.appendChild(style);
 
 // Service Worker registration for PWA features (optional)
+// Commented out until service-worker.js is implemented
+/*
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/service-worker.js')
@@ -903,3 +910,4 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+*/

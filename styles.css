@@ -250,6 +250,14 @@ a:hover {
     gap: var(--spacing-lg);
     justify-content: center;
     animation: fadeInUp 1s ease 0.4s both;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-buttons .btn {
+    position: relative;
+    z-index: 3;
+    pointer-events: auto;
 }
 
 /* Page Header */
