@@ -1,6 +1,62 @@
 // House of Humanity Website JavaScript
-// Enhanced functionality for interactive features
+// Enhanced functionality for interactive features with performance optimizations
 
+// Use modern ES6+ features and optimizations
+'use strict';
+
+// Utility functions for performance
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
+
+const throttle = (func, limit) => {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+};
+
+// Modern intersection observer for animations
+const observeElementsInView = () => {
+    const elements = document.querySelectorAll('.mission-card, .stat, .option-card');
+    
+    if (!elements.length) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
+};
+
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initNavigation();
@@ -11,21 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnalytics();
 });
 
-// Navigation functionality
+// Navigation functionality with performance optimizations
 function initNavigation() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const navbar = document.querySelector('.navbar');
 
-    // Mobile menu toggle
+    // Mobile menu toggle with improved accessibility
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
+            const isExpanded = navMenu.classList.contains('active');
+            
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
             
             // Update ARIA attributes
-            const isExpanded = navMenu.classList.contains('active');
-            navToggle.setAttribute('aria-expanded', isExpanded);
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = !isExpanded ? 'hidden' : '';
         });
 
         // Close mobile menu when clicking on a link
@@ -34,49 +95,67 @@ function initNavigation() {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             });
         });
 
-        // Close mobile menu when clicking outside
+        // Close mobile menu when clicking outside (optimized)
         document.addEventListener('click', function(event) {
             const isClickInsideNav = navMenu.contains(event.target) || navToggle.contains(event.target);
             if (!isClickInsideNav && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                navToggle.focus();
             }
         });
     }
 
-    // Navbar scroll effect
+    // Optimized navbar scroll effect with throttling
     let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
     
-    window.addEventListener('scroll', function() {
+    const handleScroll = throttle(() => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Add background on scroll
+        // Add background on scroll with better performance
         if (scrollTop > 50) {
-            navbar.classList.add('scrolled');
+            navbar?.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            navbar?.classList.remove('scrolled');
         }
         
-        // Hide/show navbar on scroll (optional)
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
+        // Hide/show navbar on scroll (optional) - optimized
+        if (navbar) {
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
         }
         
-        lastScrollTop = scrollTop;
-    });
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    }, 16); // ~60fps
 
-    // Smooth scrolling for anchor links
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Smooth scrolling for anchor links with improved performance
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            
             if (target) {
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
@@ -86,27 +165,30 @@ function initNavigation() {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Update focus for accessibility
+                target.focus({ preventScroll: true });
             }
         });
     });
 }
 
-// Form handling and validation
+// Form handling and validation with enhanced UX
 function initForms() {
-    // Contact form
+    // Contact form with improved validation
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', handleContactSubmit);
         
-        // Real-time validation
+        // Real-time validation with debouncing
         const inputs = contactForm.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', validateField);
-            input.addEventListener('input', clearFieldError);
+            input.addEventListener('input', debounce(clearFieldError, 300));
         });
     }
 
-    // Donation form
+    // Donation form with enhanced security
     const donationForm = document.querySelector('.donation-form');
     if (donationForm) {
         donationForm.addEventListener('submit', handleDonationSubmit);
@@ -114,7 +196,7 @@ function initForms() {
         initPaymentMethodSelection();
     }
 
-    // Newsletter signup
+    // Newsletter signup with spam protection
     const newsletterForms = document.querySelectorAll('.newsletter-form');
     newsletterForms.forEach(form => {
         form.addEventListener('submit', handleNewsletterSubmit);
@@ -435,66 +517,49 @@ function initRecurringDonation() {
 }
 
 // Animation and scroll effects
+// Enhanced animations with better performance
 function initAnimations() {
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // Use the optimized intersection observer
+    observeElementsInView();
     
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                
-                // Add staggered animation for grid items
-                if (entry.target.classList.contains('impact-card') || 
-                    entry.target.classList.contains('value-card') ||
-                    entry.target.classList.contains('program-card')) {
-                    const cards = entry.target.parentNode.children;
-                    Array.from(cards).forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('fade-in-up');
-                        }, index * 100);
-                    });
-                }
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.impact-card, .value-card, .program-card, .testimonial-card, .access-card, .faq-item, .mission-stats, .founder-bio');
-    animatedElements.forEach(el => observer.observe(el));
-    
-    // Counter animation for statistics
+    // Enhanced counter animation for statistics
     animateCounters();
+    
+    // Parallax effect for hero section (optional, performance-conscious)
+    initParallaxEffect();
 }
 
 function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
+    const counters = document.querySelectorAll('.stat h3, .stat-number');
     
     const counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
-                const target = parseInt(counter.textContent.replace(/[^0-9]/g, ''));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
+                const text = counter.textContent;
+                const numbers = text.match(/\d+/);
                 
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
+                if (numbers) {
+                    const target = parseInt(numbers[0]);
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
                     
-                    // Format number with commas
-                    const formatted = Math.floor(current).toLocaleString();
-                    counter.textContent = counter.textContent.replace(/[\d,]+/, formatted);
-                }, 16);
-                
-                counterObserver.unobserve(counter);
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        
+                        // Format number and maintain any suffix (+ or %)
+                        const formatted = Math.floor(current);
+                        const suffix = text.replace(/\d+/, '').replace(/^[\d,]+/, '');
+                        counter.textContent = formatted + suffix;
+                    }, 16);
+                    
+                    counterObserver.unobserve(counter);
+                }
             }
         });
     }, { threshold: 0.5 });
@@ -502,20 +567,38 @@ function animateCounters() {
     counters.forEach(counter => counterObserver.observe(counter));
 }
 
-// Accessibility enhancements
+// Optional parallax effect (only if user prefers motion)
+function initParallaxEffect() {
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        
+        const handleParallax = throttle(() => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        }, 16);
+        
+        window.addEventListener('scroll', handleParallax, { passive: true });
+    }
+}
+
+// Enhanced accessibility
 function initAccessibility() {
-    // Skip to main content link
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'sr-only';
-    skipLink.addEventListener('focus', function() {
-        this.classList.remove('sr-only');
-    });
-    skipLink.addEventListener('blur', function() {
-        this.classList.add('sr-only');
-    });
-    document.body.insertBefore(skipLink, document.body.firstChild);
+    // Add skip link if it doesn't exist
+    if (!document.querySelector('.skip-link')) {
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.textContent = 'Skip to main content';
+        skipLink.className = 'skip-link';
+        document.body.insertBefore(skipLink, document.body.firstChild);
+    }
+    
+    // Add main content ID if it doesn't exist
+    const main = document.querySelector('main') || document.querySelector('.hero');
+    if (main && !main.id) {
+        main.id = 'main-content';
+    }
     
     // Social media links accessibility - uncomment when ready to use
     /*
