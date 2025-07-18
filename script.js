@@ -517,6 +517,8 @@ function initAccessibility() {
     });
     document.body.insertBefore(skipLink, document.body.firstChild);
     
+    // Social media links accessibility - uncomment when ready to use
+    /*
     // Add aria-labels to social media links
     const socialLinks = document.querySelectorAll('.footer-social a');
     socialLinks.forEach(link => {
@@ -542,6 +544,7 @@ function initAccessibility() {
         
         link.setAttribute('aria-label', ariaLabel);
     });
+    */
     
     // Keyboard navigation for mobile menu
     const navToggle = document.getElementById('nav-toggle');
