@@ -854,18 +854,6 @@ function trackEvent(eventName, parameters = {}) {
     console.log('Event tracked:', eventName, parameters);
 }
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
 // Add CSS animations
 const animationCSS = `
     @keyframes slideInRight {

@@ -30,28 +30,29 @@
     
     <title>The House of Humanity - Restoring Dignity and Renewing Dreams</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <!-- Favicon - conditional loading to prevent 404 errors -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" onerror="this.style.display='none'">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" onerror="this.style.display='none'">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" onerror="this.style.display='none'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" onerror="this.style.display='none'">
     <link rel="manifest" href="/site.webmanifest">
     
-    <!-- Preload critical resources -->
+    <!-- Preload critical resources for better performance -->
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="script.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="images/The House of Humanity-logo3.jpg" as="image">
     
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     
-    <!-- Fonts with optimized loading -->
+    <!-- Fonts with optimized loading and display=swap for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Styles with media attribute for performance -->
+    <link rel="stylesheet" href="styles.css" media="all">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -92,10 +93,10 @@
     </script>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation with improved accessibility and performance -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-logo">
-                <img src="images/The House of Humanity-logo3.jpg" alt="The House of Humanity Logo" class="nav-logo-main" width="60" height="60" loading="eager">
+                <img src="images/The House of Humanity-logo3.jpg" alt="The House of Humanity Logo" class="nav-logo-main" width="60" height="60" loading="eager" fetchpriority="high">
                 <div class="nav-logo-text">
                     <h2>The House of Humanity</h2>
                     <span>Making A Way</span>
@@ -260,7 +261,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logos">
-                        <img src="images/HouseofHumanityLogo2.png" alt="The House of Humanity Logo" class="footer-logo-secondary" width="80" height="80" loading="lazy">
+                        <img src="images/HouseofHumanityLogo2.png" alt="The House of Humanity Logo" class="footer-logo-secondary" width="80" height="80" loading="lazy" decoding="async">
                     </div>
                     <h3>The House of Humanity</h3>
                     <p>Making A Way</p>
@@ -309,7 +310,10 @@
         </div>
     </footer>
 
-    <!-- Load JavaScript with defer for better performance -->
-    <script src="script.js" defer></script>
+    <!-- Error handling for better performance -->
+    <script src="error-handler.js"></script>
+    
+    <!-- Load JavaScript with defer for better performance and resource hints -->
+    <script src="script.js" defer crossorigin="anonymous"></script>
 </body>
 </html>

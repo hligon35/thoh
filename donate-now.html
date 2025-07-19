@@ -6,22 +6,41 @@
     <meta name="description" content="Support The House of Humanity's mission by making a donation. Help us provide comprehensive environments where families can access resources and build resilience.">
     <meta name="keywords" content="donate homeless shelter, domestic abuse donation, comprehensive support, charitable giving, nonprofit donation">
     <meta name="author" content="The House of Humanity">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://houseofhumanity.org/donate-now.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://houseofhumanity.org/donate-now.html">
+    <meta property="og:title" content="Donate Now - The House of Humanity">
+    <meta property="og:description" content="Support our mission to provide safe havens for homeless families and domestic abuse victims. Every donation makes a difference.">
+    <meta property="og:image" content="https://houseofhumanity.org/images/donation-cover.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Donate Now - The House of Humanity">
+    <meta name="twitter:description" content="Support our mission to provide safe havens for homeless families and domestic abuse victims.">
+    
     <title>Donate Now - The House of Humanity</title>
     
-    <!-- Fonts -->
+    <!-- Fonts with optimized loading and performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="images/The House of Humanity-logo3.jpg" as="image">
+    
+    <!-- Styles with media attribute -->
+    <link rel="stylesheet" href="styles.css" media="all">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="images/The House of Humanity-logo3.jpg" alt="The House of Humanity Logo" class="nav-logo-main">
+                <img src="images/The House of Humanity-logo3.jpg" alt="The House of Humanity Logo" class="nav-logo-main" width="60" height="60" loading="eager" fetchpriority="high">
                 <div class="nav-logo-text">
                     <h2>The House of Humanity</h2>
                     <span>Making A Way</span>
@@ -180,7 +199,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logos">
-                        <img src="images/HouseofHumanityLogo2.png" alt="The House of Humanity Logo" class="footer-logo-secondary" width="80" height="80" loading="lazy">
+                        <img src="images/HouseofHumanityLogo2.png" alt="The House of Humanity Logo" class="footer-logo-secondary" width="80" height="80" loading="lazy" decoding="async">
                     </div>
                     <h3>The House of Humanity</h3>
                     <p>Making A Way</p>
