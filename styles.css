@@ -1,3 +1,47 @@
+/* Service Cards 3-2 Grid Layout */
+.services-grid-stack {
+  display: grid;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid-stack:nth-child(1) {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1100px;
+  margin-bottom: 2.5rem;
+}
+.services-grid-stack:nth-child(2) {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 730px;
+}
+
+.service-card {
+  background: #f7f6fa;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(2,201,170,0.08);
+  padding: 1.2rem 1rem;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.service-card img {
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+.service-card h3 {
+  color: #02c9aa;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.service-card p {
+  color: #444;
+  font-size: 1rem;
+}
 
 /* About Section Layout */
 .services-section {
