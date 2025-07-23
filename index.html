@@ -56,39 +56,8 @@
     
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NGO",
-      "name": "The House Of Humanity",
-      "url": "https://www.thehouseofhumanity.com",
-      "logo": "https://www.thehouseofhumanity.com/images/The House of Humanity-logo3.jpg",
-      "description": "Fighting hunger and building hope in our community. Providing nutritious food and essential support to families in need.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "123 Community Way",
-        "addressLocality": "Hometown",
-        "addressRegion": "ST",
-        "postalCode": "12345"
-      },
-      "telephone": "(555) 123-4567",
-      "email": "info@thehouseofhumanity.com",
-      "sameAs": [
-        "https://facebook.com/thehouseofhumanity",
-        "https://twitter.com/thehouseofhumanity",
-        "https://instagram.com/thehouseofhumanity"
-      ]
-    }
-    </script>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            </div>
+        </section>
                 <div class="logo">
                     <img src="images/The House of Humanity-logo3.jpg" alt="The House Of Humanity Logo" class="logo-img" width="100" height="100">
                     <h1>The House Of Humanity</h1>
@@ -169,67 +138,36 @@
         </section>
 
         <!-- Volunteer Section -->
-        <section id="volunteer" class="volunteer">
-            <div class="container">
-                <div class="volunteer-content">
-                    <div class="volunteer-text">
-                        <h2>Get Involved</h2>
-                        <p>We believe in the power of community. Volunteers, partners, and supporters are essential to our mission. Join us in making a difference—whether through volunteering, donations, or spreading awareness, your involvement helps restore dignity and renew dreams for families in need.</p>
-                        <a href="#contact" class="btn btn-primary">Sign Up to Volunteer</a>
-                    </div>
-                    <div class="volunteer-image">
-                        <img src="images/GroupRun4Humanity.jpg" alt="Volunteers at The House of Humanity" width="500" height="400" loading="lazy">
-                    </div>
+        <section id="volunteer" class="volunteer-section">
+            <div class="volunteer-flex">
+                <div class="volunteer-info">
+                    <h2 class="volunteer-title">Get Involved</h2>
+                    <p class="volunteer-desc">We believe in the power of community. Volunteers, partners, and supporters are essential to our mission. Join us in making a difference—whether through volunteering, donations, or spreading awareness, your involvement helps restore dignity and renew dreams for families in need.</p>
+                    <a href="#contact" class="btn btn-primary">Sign Up to Volunteer</a>
+                </div>
+                <div class="volunteer-img-wrap">
+                    <img src="images/GroupRun4Humanity.jpg" alt="Volunteers at The House of Humanity" width="420" height="280" loading="lazy" class="volunteer-img">
                 </div>
             </div>
         </section>
+        </section>
 
     <!-- Donation Form Section -->
-    <div class="donation-form-outer-container">
-      <section class="donation-form-section">
-          <div class="container">
-              <div class="donation-content">
-                  <div class="donation-info">
-                      <h2>Make Your Donation</h2>
-                      <p>
-                          Every donation helps us continue our mission of Renewing Dreams, Restoring Dignity. 
-                          Your support enables us to provide secure family shelters and essential services 
-                          that help homeless families and domestic violence victims rebuild their lives.
-                      </p>
-                      <div class="donation-benefits">
-                          <h3>Why Donate to Us?</h3>
-                          <div class="benefits-list">
-                              <div class="benefit-item">90% of funds go directly to family services</div>
-                              <div class="benefit-item">Specialized support for domestic violence victims</div>
-                              <div class="benefit-item">Transparent reporting on family outcomes</div>
-                              <div class="benefit-item">Regular updates on lives transformed</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="donation-form-container">
-                      <!-- Easy Payment Options Section -->
-    <div class="easy-payment-container">
-        <h2 class="easy-payment-title">Easy Payment Options</h2>
-        <p class="easy-payment-subtitle">Choose your preferred method to donate instantly:</p>
-        <div class="easy-payment-options">
-            <div class="easy-payment-card">
-                <div class="easy-payment-card-header"></div>
-                <h3 class="easy-payment-card-title">Cash App</h3>
-                <img src="images/cashAppHOH.png" alt="Cash App QR Code" class="easy-payment-img">
-                <p class="easy-payment-desc">Scan with Cash App</p>
+    <section class="donation-section">
+        <div class="donation-header">
+            <h2 class="donation-title" style="text-align:center; font-weight:800; color:#222;">Make Your Donation</h2>
+            <p class="donation-desc" style="text-align:center; font-size:1.15rem; color:#444;">Every donation helps us continue our mission of Renewing Dreams, Restoring Dignity. Your support enables us to provide secure family shelters and essential services that help homeless families and domestic violence victims rebuild their lives.</p>
+        </div>
+        <div class="donation-benefits-wrap">
+            <h3 class="donation-benefits-title" style="text-align:center; font-weight:700; color:#222;">Why Donate to Us?</h3>
+            <div class="donation-benefits-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; justify-content:center; align-items:center; max-width:900px; margin:0 auto;">
+                <div class="donation-benefit" style="background:#fff; color:#02c9aa; font-size:1.15rem; font-weight:600; border-radius:16px; box-shadow:0 2px 12px rgba(2,201,170,0.08); padding:1.2rem 1rem; text-align:center; border:1.5px solid #e5e7eb;">90% of funds go directly to family services</div>
+                <div class="donation-benefit" style="background:#fff; color:#02c9aa; font-size:1.15rem; font-weight:600; border-radius:16px; box-shadow:0 2px 12px rgba(2,201,170,0.08); padding:1.2rem 1rem; text-align:center; border:1.5px solid #e5e7eb;">Specialized support for domestic violence victims</div>
+                <div class="donation-benefit" style="background:#fff; color:#02c9aa; font-size:1.15rem; font-weight:600; border-radius:16px; box-shadow:0 2px 12px rgba(2,201,170,0.08); padding:1.2rem 1rem; text-align:center; border:1.5px solid #e5e7eb;">Transparent reporting on family outcomes</div>
+                <div class="donation-benefit" style="background:#fff; color:#02c9aa; font-size:1.15rem; font-weight:600; border-radius:16px; box-shadow:0 2px 12px rgba(2,201,170,0.08); padding:1.2rem 1rem; text-align:center; border:1.5px solid #e5e7eb;">Regular updates on lives transformed</div>
             </div>
-            <div class="easy-payment-card">
-                <div class="easy-payment-card-header"></div>
-                <h3 class="easy-payment-card-title">PayPal</h3>
-                <img src="images/Paypal_QR_Code.jfif" alt="PayPal QR Code" class="easy-payment-img">
-                <p class="easy-payment-desc">Scan with PayPal App</p>
-            </div>
-            <div class="easy-payment-card">
-                <div class="easy-payment-card-header"></div>
-                <h3 class="easy-payment-card-title">Apple Pay</h3>
-                <img src="images/Apple_Pay_logo.svg" alt="Apple Pay Logo" class="easy-payment-img" style="width:100px;">
-                <div class="easy-payment-phone">540-872-1873</div>
-                <p class="easy-payment-desc">Send via Apple Pay</p>
+        </div>
+    </section>
             </div>
         </div>
     </div>
@@ -240,102 +178,64 @@
     </div>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Contact Us</h2>
-                    <p>We're here to help and answer any questions you may have about The House of Humanity and our programs.</p>
-                </div>
-                <div class="contact-content">
-                    <form class="contact-form" method="POST" action="#" novalidate>
-                        <h3>Send us a Message</h3>
-                        <div class="form-group">
-                            <label for="name" class="sr-only">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="sr-only">Your Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="topic" class="sr-only">Select a Topic</label>
-                            <select id="topic" name="topic" required aria-required="true">
-                                <option value="">Select a Topic</option>
-                                <option value="volunteer">Volunteer Opportunities</option>
-                                <option value="donation">Monetary Donation</option>
-                                <option value="services">Request Services</option>
-                                <option value="partnership">Partnership Inquiry</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="sr-only">Your Message</label>
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+        <section id="contact" class="contact-section">
+            <div class="contact-header">
+                <h2>Contact Us</h2>
+                <p>We're here to help and answer any questions you may have about The House of Humanity and our programs.</p>
+            </div>
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="contact-form-title">Send us a Message</div>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <select required>
+                        <option value="">Select a Topic</option>
+                        <option value="volunteer">Volunteer Opportunities</option>
+                        <option value="donation">Monetary Donation</option>
+                        <option value="services">Request Services</option>
+                        <option value="partnership">Partnership Inquiry</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>The House Of Humanity</h3>
-                    <p>Serving our community with dignity, respect, and compassion. No one should go hungry.</p>
-                    <div class="social-links">
-                        <a href="https://youtube.com/communityhearts" aria-label="Visit our YouTube channel" rel="noopener noreferrer" target="_blank">
-                            <img src="images/SocialIcons/Youtube.png" alt="YouTube" class="social-icon" width="40" height="40" loading="lazy">
-                        </a>
-                        <a href="https://twitter.com/communityhearts" aria-label="Follow us on X (Twitter)" rel="noopener noreferrer" target="_blank">
-                            <img src="images/SocialIcons/XSocialIcon.png" alt="X (Twitter)" class="social-icon" width="40" height="40" loading="lazy">
-                        </a>
-                        <a href="https://instagram.com/communityhearts" aria-label="Follow us on Instagram" rel="noopener noreferrer" target="_blank">
-                            <img src="images/SocialIcons/IGicon.png" alt="Instagram" class="social-icon" width="40" height="40" loading="lazy">
-                        </a>
-                        <a href="https://linkedin.com/company/communityhearts" aria-label="Connect with us on LinkedIn" rel="noopener noreferrer" target="_blank">
-                            <img src="images/SocialIcons/LinkedIn.png" alt="LinkedIn" class="social-icon" width="40" height="40" loading="lazy">
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#volunteer">Volunteer</a></li>
-                        <li><a href="#donate">Donate</a></li>
-                    </ul>
-                </div>
-                
-                <!-- <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="/food-safety" rel="noopener">Food Safety Guidelines</a></li>
-                        <li><a href="/annual-reports" rel="noopener">Annual Reports</a></li>
-                        <li><a href="/partners" rel="noopener">Partner Organizations</a></li>
-                        <li><a href="/privacy-policy" rel="noopener">Privacy Policy</a></li>
-                    </ul>
-                </div> -->
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <address>
-                        123 Community Way<br>
-                        Hometown, ST 12345
-                    </address>
-                    <p>Phone: <a href="tel:+15551234567">(555) 123-4567</a></p>
-                    <p>Email: <a href="mailto:info@communityhearts.org">info@communityhearts.org</a></p>
+    <footer class="footer" style="background:#02c9aa; color:#fff; padding:48px 0 0 0;">
+        <div class="footer-main" style="max-width:1400px; margin:0 auto; display:flex; justify-content:center; gap:32px;">
+            <div style="flex:1; min-width:220px;">
+                <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.7rem;">The House Of Humanity</h3>
+                <p style="margin-bottom:1.2rem; color:#fff;">Serving our community with dignity, respect, and compassion. No one should go hungry.</p>
+                <div style="display:flex; gap:18px; align-items:center;">
+                    <a href="https://youtube.com/communityhearts" aria-label="YouTube" target="_blank" rel="noopener"><img src="images/SocialIcons/Youtube.png" alt="YouTube" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                    <a href="https://twitter.com/communityhearts" aria-label="X" target="_blank" rel="noopener"><img src="images/SocialIcons/XSocialIcon.png" alt="X" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                    <a href="https://instagram.com/communityhearts" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                    <a href="https://linkedin.com/company/communityhearts" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="images/SocialIcons/LinkedIn.png" alt="LinkedIn" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 The House Of Humanity. All rights reserved. | 501(c)(3) Non-Profit Organization</p>
+            <div style="flex:1; min-width:180px;">
+                <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:0.7rem;">Quick Links</h4>
+                <ul style="list-style:none; padding:0; margin:0; color:#fff;">
+                    <li style="margin-bottom:0.5rem;"><a href="#about" style="color:#fff; text-decoration:none;">About Us</a></li>
+                    <li style="margin-bottom:0.5rem;"><a href="#services" style="color:#fff; text-decoration:none;">Our Services</a></li>
+                    <li style="margin-bottom:0.5rem;"><a href="#volunteer" style="color:#fff; text-decoration:none;">Volunteer</a></li>
+                    <li style="margin-bottom:0.5rem;"><a href="#donate" style="color:#fff; text-decoration:none;">Donate</a></li>
+                </ul>
             </div>
+            <div style="flex:1; min-width:220px;">
+                <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:0.7rem;">Contact Info</h4>
+                <div style="margin-bottom:0.5rem;">123 Community Way</div>
+                <div style="margin-bottom:0.5rem;">Hometown, ST 12345</div>
+                <div style="margin-bottom:0.5rem;">Phone:</div>
+                <div style="margin-bottom:0.5rem;">Email:</div>
+            </div>
+        </div>
+        <hr style="margin:40px auto 0 auto; max-width:60%; border:0; border-top:2px solid #009e86;">
+        <div class="footer-bottom" style="text-align:center; padding:24px 0 0 0; color:#fff; background:#02c9aa; font-size:1rem;">
+            <p>&copy; 2025 The House Of Humanity. All rights reserved. | 501(c)(3) Non-Profit Organization</p>
         </div>
     </footer>
 </body>
