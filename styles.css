@@ -510,8 +510,8 @@ nav menu a {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--text-light);
+    background: #fff !important;
+    color: #222 !important;
     padding: 120px 0 80px;
     text-align: center;
     position: relative;
@@ -519,14 +519,7 @@ nav menu a {
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    display: none;
 }
 
 .hero .container {
