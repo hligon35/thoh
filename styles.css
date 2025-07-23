@@ -55,6 +55,7 @@
     height: 140px;
     object-fit: cover;
     border-radius: 12px;
+/* Navigation Styles Refactored from Inline */
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 8px rgba(2,201,170,0.08);
 }
