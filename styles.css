@@ -443,6 +443,7 @@ img {
     width: auto;
     border-radius: var(--radius-sm);
     object-fit: contain;
+    margin-left: 20px;
 }
 
 .nav-logo-text h2 {
@@ -526,6 +527,7 @@ nav menu a {
 .hero .container {
     position: relative;
     z-index: 2;
+    margin-left: 40px;
 }
 
 .hero h1 {
@@ -1635,6 +1637,7 @@ nav menu a {
     width: auto;
     border-radius: 15px;
     box-shadow: var(--shadow-sm);
+    margin-left: 20px;
 }
 
 .footer-brand h3 {
