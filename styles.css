@@ -2415,7 +2415,7 @@ a:focus {
 
 /* Hero Section Updates */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #e5e7eb;
     color: var(--text-light);
     padding: 120px 0 80px;
     text-align: center;
@@ -2445,7 +2445,7 @@ a:focus {
 }
 
 .hero-placeholder {
-    background: rgba(255, 255, 255, 0.1);
+    background: hsla(260, 13%, 91%, 0.1);
     border-radius: var(--radius-xl);
     padding: var(--spacing-xxl);
     text-align: center;
