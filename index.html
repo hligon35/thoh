@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="The House Of Humanity - Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#02c9aa">
     <meta name="keywords" content="food pantry, hunger relief, community support, volunteer, donations, nonprofit, food assistance">
     <meta name="author" content="The House Of Humanity">
     
@@ -25,6 +28,8 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"></noscript>
     
     <!-- Critical CSS for above-the-fold content -->
@@ -271,7 +276,7 @@
     <div id="eventImageModal" class="event-image-modal" style="display:none;">
       <img id="eventModalImg" src="images/Upcoming event.png" alt="Upcoming Event Enlarged">
     </div>
-    <script>
+    <script defer>
       // Event image click-to-enlarge logic
       document.addEventListener('DOMContentLoaded', function() {
         var eventImg = document.querySelector('.event-image-clickable');
@@ -289,17 +294,18 @@
       });
     </script>
     <footer class="footer" style="background:#02c9aa; color:#fff; padding:48px 0 0 0;">
-<div class="footer-main" style="max-width:1000px; margin:0 auto; display:flex; justify-content:center; gap:2.5rem; align-items:flex-start;">
+<div class="footer-main" style="max-width:1000px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:2.5rem; align-items:flex-start;">
+            <div style="width:auto; flex-basis:auto; max-width:120px; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:12px; align-items:center; justify-items:center;">
+                <a href="https://youtube.com/communityhearts" aria-label="YouTube" target="_blank" rel="noopener"><img src="images/SocialIcons/Youtube.png" alt="YouTube" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://twitter.com/communityhearts" aria-label="X" target="_blank" rel="noopener"><img src="images/SocialIcons/XSocialIcon.png" alt="X" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://instagram.com/communityhearts" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://linkedin.com/company/communityhearts" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="images/SocialIcons/LinkedIn.png" alt="LinkedIn" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+            </div>
             <div style="width:auto; flex-basis:auto; max-width:300px; text-align:center;">
                 <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.7rem;">The House Of Humanity</h3>
                 <p style="margin-bottom:0; color:#fff;">Serving our community with dignity, respect, and compassion. No one should go hungry.</p>
-                <div style="display:flex; gap:18px; align-items:center; margin-bottom:0;">
-                    <a href="https://youtube.com/communityhearts" aria-label="YouTube" target="_blank" rel="noopener"><img src="images/SocialIcons/Youtube.png" alt="YouTube" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                    <a href="https://twitter.com/communityhearts" aria-label="X" target="_blank" rel="noopener"><img src="images/SocialIcons/XSocialIcon.png" alt="X" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                    <a href="https://instagram.com/communityhearts" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                    <a href="https://linkedin.com/company/communityhearts" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="images/SocialIcons/LinkedIn.png" alt="LinkedIn" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                </div>
             </div>
+
             <div style="width:auto; flex-basis:auto;">
                 <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:0;">Quick Links</h4>
                 <ul style="list-style:none; padding:0; margin:0 !important; color:#fff; display:flex; flex-direction:column; gap:0;">
@@ -315,7 +321,7 @@
                 <div style="margin-bottom:0;">Hometown, ST 12345</div>
                 <div style="margin-bottom:0;">Email: info@thehouseofhumanity.com</div>
             </div>
-        </div>
+</div>
         <hr style="margin:12px auto 0 auto; max-width:60%; border:0; border-top:2px solid #009e86;">
         <div class="footer-bottom" style="text-align:center; padding:8px 0 0 0; color:#fff; background:#02c9aa; font-size:1rem;">
             <p>&copy; 2025 The House Of Humanity. All rights reserved. | 501(c)(3) Non-Profit Organization</p>

@@ -1,3 +1,66 @@
+/* Responsive and performance optimizations */
+@media (max-width: 900px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 98vw;
+  }
+  .footer-main > div {
+    max-width: 100%;
+    text-align: center;
+  }
+  .services-grid-stack {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 98vw;
+  }
+  .volunteer-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .donation-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    max-width: 98vw;
+  }
+  .payment-options-section {
+    padding: 18px 8px;
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 0.98rem;
+  }
+  .header, .footer-bottom {
+    font-size: 0.95rem;
+  }
+  .logo-img {
+    height: 60px;
+    width: auto;
+  }
+  .hero {
+    padding: 2rem 0.5rem;
+    min-height: 30vh;
+    border-radius: 12px;
+  }
+  .hero-content {
+    padding: 1.2rem 0.5rem;
+    border-radius: 12px;
+  }
+  .about-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+  }
+  .service-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}
 /* Event Image Overlay Modal */
 .event-image-modal {
   position: fixed;
