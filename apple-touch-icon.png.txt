@@ -1,3 +1,0 @@
-# Apple Touch Icon placeholder - Replace with actual PNG file
-# This file should be replaced with a 180x180 PNG image
-# For now, this prevents 404 errors during development

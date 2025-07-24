@@ -1,3 +1,0 @@
-# Favicon placeholder - Replace with actual favicon.ico file
-# This file should be replaced with a proper ICO format favicon
-# For now, this prevents 404 errors during development
