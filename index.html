@@ -12,17 +12,17 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://communityhearts.org/">
+    <meta property="og:url" content="https://thehouseofhumanity.org/">
     <meta property="og:title" content="The House Of Humanity - Feeding Our Neighbors">
     <meta property="og:description" content="Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need.">
-    <meta property="og:image" content="https://communityhearts.org/images/meta.jpg">
+    <meta property="og:image" content="https://thehouseofhumanity.org/images/meta.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://communityhearts.org/">
+    <meta property="twitter:url" content="https://thehouseofhumanity.org/">
     <meta property="twitter:title" content="The House Of Humanity - Feeding Our Neighbors">
     <meta property="twitter:description" content="Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need.">
-    <meta property="twitter:image" content="https://communityhearts.org/images/meta.jpg">
+    <meta property="twitter:image" content="https://thehouseofhumanity.org/images/meta.jpg">
 
     <title>The House Of Humanity -  Restoring Dignity and Renewing Dreams</title>
     
@@ -74,6 +74,7 @@
                             <li role="none"><a href="#home" role="menuitem">Home</a></li>
                             <li role="none"><a href="#about" role="menuitem">About</a></li>
                             <li role="none"><a href="#services" role="menuitem">Services</a></li>
+                            <li role="none"><a href="#events" role="menuitem">Events</a></li>
                             <li role="none"><a href="#volunteer" role="menuitem">Volunteer</a></li>
                             <li role="none"><a href="#donate" role="menuitem">Donate</a></li>
                             <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
@@ -268,19 +269,37 @@
             <div class="contact-form-container">
                 <form class="contact-form">
                     <div class="contact-form-title">Send us a Message</div>
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <select required>
+                    <input type="text" id="contactName" placeholder="Your Name" required>
+                    <input type="email" id="contactEmail" placeholder="Your Email" required>
+                    <select id="contactTopic" required>
                         <option value="">Select a Topic</option>
-                        <option value="volunteer">Volunteer Opportunities</option>
-                        <option value="donation">Monetary Donation</option>
-                        <option value="services">Request Services</option>
-                        <option value="partnership">Partnership Inquiry</option>
-                        <option value="other">Other</option>
+                        <option value="Volunteer Opportunities">Volunteer Opportunities</option>
+                        <option value="Monetary Donation">Monetary Donation</option>
+                        <option value="Request Services">Request Services</option>
+                        <option value="Partnership Inquiry">Partnership Inquiry</option>
+                        <option value="Other">Other</option>
                     </select>
-                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <textarea id="contactMessage" rows="5" placeholder="Your Message" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  var contactForm = document.querySelector('.contact-form');
+                  if (contactForm) {
+                    contactForm.addEventListener('submit', function(e) {
+                      e.preventDefault();
+                      var name = document.getElementById('contactName').value;
+                      var email = document.getElementById('contactEmail').value;
+                      var topic = document.getElementById('contactTopic').value;
+                      var message = document.getElementById('contactMessage').value;
+                      var mailto = 'mailto:info@thehouseofhumanity.org'
+                        + '?subject=' + encodeURIComponent('Message from thehouseofhumanity.org')
+                        + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nTopic: ' + topic + '\nMessage: ' + message);
+                      window.location.href = mailto;
+                    });
+                  }
+                });
+                </script>
             </div>
         </section>
     </main>
@@ -310,10 +329,10 @@
     <footer class="footer" style="background:#02c9aa; color:#fff; padding:48px 0 0 0;">
 <div class="footer-main" style="max-width:1000px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:2.5rem; align-items:flex-start;">
             <div style="width:auto; flex-basis:auto; max-width:120px; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:12px; align-items:center; justify-items:center;">
-                <a href="https://youtube.com/communityhearts" aria-label="YouTube" target="_blank" rel="noopener"><img src="images/SocialIcons/Youtube.png" alt="YouTube" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                <a href="https://twitter.com/communityhearts" aria-label="X" target="_blank" rel="noopener"><img src="images/SocialIcons/XSocialIcon.png" alt="X" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                <a href="https://instagram.com/communityhearts" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                <a href="https://linkedin.com/company/communityhearts" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="images/SocialIcons/LinkedIn.png" alt="LinkedIn" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://youtube.com/thehouseofhumanity" aria-label="YouTube" target="_blank" rel="noopener"><img src="images/SocialIcons/Youtube.png" alt="YouTube" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://twitter.com/thehouseofhumanity" aria-label="X" target="_blank" rel="noopener"><img src="images/SocialIcons/XSocialIcon.png" alt="X" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://instagram.com/thehouseofhumanity" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                <a href="https://linkedin.com/company/thehouseofhumanity" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="images/SocialIcons/LinkedIn.png" alt="LinkedIn" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
             </div>
             <div style="width:auto; flex-basis:auto; max-width:300px; text-align:center;">
                 <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.7rem;">The House Of Humanity</h3>
@@ -325,6 +344,7 @@
                 <ul style="list-style:none; padding:0; margin:0 !important; color:#fff; display:flex; flex-direction:column; gap:0;">
                     <li style="margin-bottom:0;"><a href="#about" style="color:#fff; text-decoration:none;">About Us</a></li>
                     <li style="margin-bottom:0;"><a href="#services" style="color:#fff; text-decoration:none;">Our Services</a></li>
+                    <li style="margin-bottom:0;"><a href="#events" style="color:#fff; text-decoration:none;">Events</a></li>
                     <li style="margin-bottom:0;"><a href="#volunteer" style="color:#fff; text-decoration:none;">Volunteer</a></li>
                     <li style="margin-bottom:0;"><a href="#donate" style="color:#fff; text-decoration:none;">Donate</a></li>
                 </ul>
@@ -333,13 +353,13 @@
                 <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:0;">Contact Info</h4>
                 <div style="margin-bottom:0;">123 Community Way</div>
                 <div style="margin-bottom:0;">Hometown, ST 12345</div>
-                <div style="margin-bottom:0;">Email: info@thehouseofhumanity.com</div>
+                <div style="margin-bottom:0;">Email: info@thehouseofhumanity.org</div>
             </div>
 </div>
         <hr style="margin:12px auto 0 auto; max-width:60%; border:0; border-top:2px solid #009e86;">
         <div class="footer-bottom" style="text-align:center; padding:8px 0 0 0; color:#fff; background:#02c9aa; font-size:1rem;">
             <p>&copy; 2025 The House Of Humanity. All rights reserved. | 501(c)(3) Non-Profit Organization</p>
-            <p>Website by <a href="https://www.getsparqd.com" style="color:#fff; text-decoration:underline;">SparQ Digital</a></p>
+            <p>Website by <a href="https://www.getsparqd.com" style="color:#fff; text-decoration:underline;">SparQ Digital Media Management Company</a></p>
         </div>
     </footer>
 </body>
