@@ -49,14 +49,28 @@
         .hero-content p{font-size:1.2rem;margin-bottom:2rem;line-height:1.7;}
         .section-header h2{color:#02c9aa;font-size:2.2rem;font-weight:800;letter-spacing:1px;}
         .section-header p{color:#02c9aa;font-size:1.1rem;}
-        
-        .footer-bottom {
-            width: 100%;
-            text-align: center;
-            padding: 1em 0;
-            background: #02c9aa;
-            color: #fff;
-            font-size: 1rem;
+        .footer-bottom { width: 100%; text-align: center; padding: 1em 0; background: #02c9aa; color: #fff; font-size: 1rem; }
+        @media (max-width: 700px) {
+          .donation-benefits-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 1.2rem !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .donation-benefit {
+            margin: 0 auto !important;
+            text-align: center !important;
+            width: 100% !important;
+            max-width: 340px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
         }
     </style>
     
