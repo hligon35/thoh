@@ -41,7 +41,7 @@
         .nav-menu a{color:#02c9aa;font-weight:600;transition:color .3s;}
         .nav-menu a:hover{color:#6c2eb7;}
         .logo{display:flex;align-items:center;gap:1rem}
-        .logo-img{height:100px;width:auto;object-fit:contain;box-shadow:0 4px 16px rgba(2,201,170,0.12);border-radius:16px;}
+        .logo-img{height:70px;width:auto;object-fit:contain;box-shadow:0 4px 16px rgba(2,201,170,0.12);border-radius:15px;margin-left: 25px;}
         .logo h1{color:#02c9aa;font-size:2rem;font-weight:800;margin:0;text-shadow:1px 2px 8px #6c2eb722;letter-spacing:1px;}
         .hero{margin-top:80px;padding:4rem 0;background:linear-gradient(135deg,#02c9aa 0%,#6c2eb7 100%);display:flex;align-items:center;justify-content:center;min-height:50vh;max-width:1200px;margin-left:auto;margin-right:auto;border-radius:24px;box-shadow:0 8px 32px rgba(2,201,170,0.08);}
         .hero-content h1{color:#02c9aa;font-size:2.8rem;font-weight:900;margin-bottom:1rem;letter-spacing:1px;}
@@ -78,13 +78,13 @@
     
             </div>
         </section>
-                <div style="display:flex; width:100%; justify-content:space-between; align-items:center;">
-                    <div class="logo" style="display:flex; align-items:center; gap:1rem;">
+                <div class="nav-flex">
+                    <div class="logo">
                         <img src="images/The House of Humanity-logo3.jpg" alt="The House Of Humanity Logo" class="logo-img" width="100" height="100">
                         <h1>The House Of Humanity</h1>
                     </div>
-                    <div style="display:flex; align-items:center; gap:0.5rem;">
-                        <ul class="nav-menu" role="menubar" style="display:flex; align-items:center; gap:1.5rem;">
+                    <div class="nav-menu-flex">
+                        <ul class="nav-menu" role="menubar">
                             <li role="none"><a href="#home" role="menuitem">Home</a></li>
                             <li role="none"><a href="#about" role="menuitem">About</a></li>
                             <li role="none"><a href="#services" role="menuitem">Services</a></li>
@@ -93,7 +93,7 @@
                             <li role="none"><a href="#donate" role="menuitem">Donate</a></li>
                             <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                         </ul>
-                        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" style="margin-left:16px;">
+                        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -114,13 +114,13 @@
 
         <!-- About Section -->
         <section id="about" class="about-section">
-            <div class="about-text" style="text-align:center;">
-                <h1 style="text-align:center;">About The House of Humanity</h1>
-                <p class="subtitle" style="text-align:center;">Restoring dignity and renewing dreams for families in need</p>
-                <h2 style="text-align:center;">Our Mission</h2>
-                <p style="text-align:center;">Our mission is clear and unchanging: Renewing Dreams, Restoring Dignity. We strive to be a cornerstone in the lives of homeless families and victims of domestic violence, providing them with the support needed to overcome adversity. Families can rebuild their lives with the assurance of privacy and security through our safe haven. Our core values revolve around compassion, empowerment, and community support. We believe in fostering an environment that not only provides shelter but also equips families with the tools and programs necessary to achieve their goals for survival and long-term stability.</p>
-                <h2 style="text-align:center;">Our Vision</h2>
-                <p style="text-align:center;">We envision a future in which everyone, regardless of circumstance, has a place to call home—a safe haven where aspirations may be revived and dignity can be restored. We aspire to be a positive force for change, building communities where empathy and collective well-being are valued.</p>
+            <div class="about-text text-center">
+                <h1 class="text-center">About The House of Humanity</h1>
+                <p class="subtitle text-center">Restoring dignity and renewing dreams for families in need</p>
+                <h2 class="text-center">Our Mission</h2>
+                <p class="text-center">Our mission is clear and unchanging: Renewing Dreams, Restoring Dignity. We strive to be a cornerstone in the lives of homeless families and victims of domestic violence, providing them with the support needed to overcome adversity. Families can rebuild their lives with the assurance of privacy and security through our safe haven. Our core values revolve around compassion, empowerment, and community support. We believe in fostering an environment that not only provides shelter but also equips families with the tools and programs necessary to achieve their goals for survival and long-term stability.</p>
+                <h2 class="text-center">Our Vision</h2>
+                <p class="text-center">We envision a future in which everyone, regardless of circumstance, has a place to call home—a safe haven where aspirations may be revived and dignity can be restored. We aspire to be a positive force for change, building communities where empathy and collective well-being are valued.</p>
             </div>
             <div class="about-image">
                 <img src="images/BridgetCharles.jpeg" alt="Founder Bridget Charles" width="340" height="340" loading="lazy">
@@ -133,22 +133,22 @@
                 <h2>Our Services</h2>
                 <p>Comprehensive support for families facing homelessness and domestic violence</p>
             </div>
-            <div class="services-grid-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem; justify-content:center; margin-bottom:2.5rem; max-width:1100px; margin-left:auto; margin-right:auto;">
+            <div class="services-grid-stack grid-3col">
                 <article class="service-card">
                     <img src="images/shelter.jpg" alt="Emergency Shelter Assistance" width="220" height="140" loading="lazy">
                     <h3>Emergency Shelter Assistance</h3>
                     <p>Providing immediate shelter for homeless families and domestic violence victims, ensuring a secure and supportive environment.</p>
                 </article>
                 <article class="donation-card">
-    <article class="donation-card" style="background:#fff; border-radius:16px; box-shadow:0 2px 12px rgba(2,201,170,0.08); padding:1.2rem 1rem; text-align:center; width:100%; max-width:340px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <div class="donation-image" style="width:100%; display:flex; justify-content:center;">
-            <img src="images/cannedgood1.jpg" alt="Food donations - Essential items for families" style="width:100%; max-width:220px; height:auto; border-radius:10px; margin-bottom:1rem;">
+    <article class="donation-card card-centered">
+        <div class="donation-image flex-center">
+            <img src="images/cannedgood1.jpg" alt="Food donations - Essential items for families" class="donation-img">
         </div>
-        <h3 style="color:#02c9aa; font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;">Food Donations</h3>
-        <p style="color:#444; font-size:1rem;">We accept non-perishable food items, fresh produce, and hygiene products. Drop-off times are Monday-Friday 9AM-5PM.</p>
-        <div class="needed-items" style="margin-top:1.2rem;">
-            <h4 style="color:#02c9aa; font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Most Needed Items:</h4>
-            <ul style="list-style:none; padding:0; color:#444; font-size:1rem; text-align:left; margin:0 auto; max-width:220px;">
+        <h3 class="donation-title">Food Donations</h3>
+        <p class="donation-desc">We accept non-perishable food items, fresh produce, and hygiene products. Drop-off times are Monday-Friday 9AM-5PM.</p>
+        <div class="needed-items mt-1-2">
+            <h4 class="needed-title">Most Needed Items:</h4>
+            <ul class="needed-list">
                 <li>Canned proteins (tuna, chicken, beans)</li>
                 <li>Rice and pasta</li>
                 <li>Baby food and formula</li>
@@ -167,7 +167,7 @@
                     <img src="images/creditrepair.jpg" alt="Credit Repair Services" width="220" height="140" loading="lazy">
                     <h3>Credit Repair Services</h3>
                     <p>Helping families rebuild their financial stability through credit repair, financial education, and access to resources.</p>
-                    <a href="https://purplecreditrepair.com/index.html" target="_blank" rel="noopener" style="display:block; margin-top:0.7rem; color:#6c2eb7; font-weight:600; text-decoration:underline; font-size:1.08rem;">Discover how Purple Credit Repair can help you achieve financial freedom &mdash; Click here to learn more!</a>
+                    <a href="https://purplecreditrepair.com/index.html" target="_blank" rel="noopener" class="credit-link">Discover how Purple Credit Repair can help you achieve financial freedom &mdash; Click here to learn more!</a>
                 </article>
                 <article class="service-card">
                     <img src="images/domestic.jpg" alt="Support Services" width="220" height="140" loading="lazy">
@@ -184,20 +184,20 @@
 
         <!-- Volunteer Section -->
         <section id="volunteer" class="volunteer-section">
-            <div class="volunteer-flex" style="display:flex; gap:2.5rem; align-items:center;">
-                <div class="volunteer-video-wrap" style="flex:1; min-width:320px; max-width:420px;">
-                    <video width="100%" height="auto" controls poster="images/GroupRun4Humanity.jpg" style="border-radius:18px; box-shadow:0 2px 16px rgba(2,201,170,0.08);">
+            <div class="volunteer-flex">
+                <div class="volunteer-video-wrap">
+                    <video width="100%" height="auto" controls poster="images/GroupRun4Humanity.jpg" class="volunteer-video">
                         <source src="images/HOH 5k Walk.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div class="volunteer-info" style="flex:2;">
+                <div class="volunteer-info">
                     <h2 class="volunteer-title">Get Involved</h2>
                     <p class="volunteer-desc">We believe in the power of community. Volunteers, partners, and supporters are essential to our mission. Join us in making a difference—whether through volunteering, donations, or spreading awareness, your involvement helps restore dignity and renew dreams for families in need.</p>
                     <a href="#contact" class="btn btn-primary">Sign Up to Volunteer</a>
                 </div>
-                <div class="volunteer-img-wrap" style="flex:1; min-width:320px; max-width:420px;">
-                    <img src="images/GroupRun4Humanity.jpg" alt="Volunteers at The House of Humanity" width="100%" height="auto" loading="lazy" style="border-radius:18px; box-shadow:0 2px 16px rgba(2,201,170,0.08);">
+                <div class="volunteer-img-wrap">
+                    <img src="images/GroupRun4Humanity.jpg" alt="Volunteers at The House of Humanity" width="100%" height="auto" loading="lazy" class="volunteer-img">
                 </div>
             </div>
         </section>
@@ -366,8 +366,8 @@
             </div>
             <div style="width:auto; flex-basis:auto;">
                 <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:0;">Contact Info</h4>
-                <div style="margin-bottom:0;">123 Community Way</div>
-                <div style="margin-bottom:0;">Hometown, ST 12345</div>
+                <div style="margin-bottom:0;">Address: TBA</div>
+                <div style="margin-bottom:0;">Phone: TBA</div>
                 <div style="margin-bottom:0;">Email: info@thehouseofhumanity.org</div>
             </div>
 </div>
