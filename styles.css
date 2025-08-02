@@ -718,6 +718,15 @@ img {
     letter-spacing: 1px;
 }
 
+.nav-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .nav-menu {
   display: flex;
   align-items: center;
@@ -3163,7 +3172,7 @@ a:focus {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     margin: 0 auto;
     max-width: 900px;
 }
@@ -3178,6 +3187,10 @@ a:focus {
     margin-bottom: 0;
     text-align: center;
     border: 1.5px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
     transition: box-shadow 0.3s;
 }
 .donation-benefit:hover {
