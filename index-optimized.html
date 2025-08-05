@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="The House Of Humanity - Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#02c9aa">
+    <meta name="keywords" content="food pantry, hunger relief, community support, volunteer, donations, nonprofit, food assistance">
+    <meta name="author" content="The House Of Humanity">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thehouseofhumanity.org/">
+    <meta property="og:title" content="The House Of Humanity - Feeding Our Neighbors">
+    <meta property="og:description" content="Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need.">
+    <meta property="og:image" content="https://thehouseofhumanity.org/images/meta.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thehouseofhumanity.org/">
+    <meta property="twitter:title" content="The House Of Humanity - Feeding Our Neighbors">
+    <meta property="twitter:description" content="Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need.">
+    <meta property="twitter:image" content="https://thehouseofhumanity.org/images/meta.jpg">
+
+    <title>The House Of Humanity - Restoring Dignity and Renewing Dreams</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"></noscript>
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Open Sans',sans-serif;line-height:1.6;color:#02c9aa;background:#f7f6fa;}
+        .header{background:#02c9aa;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:fixed;width:100%;top:0;z-index:1000}
+        .navbar{width:100%;padding:0 40px;display:flex;justify-content:space-between;align-items:center}
+        .nav-menu a{color:#02c9aa;font-weight:600;transition:color .3s;}
+        .nav-menu a:hover{color:#6c2eb7;}
+        .logo{display:flex;align-items:center;gap:1rem}
+        .logo-img{height:70px;width:auto;object-fit:contain;box-shadow:0 4px 16px rgba(2,201,170,0.12);border-radius:10px;margin-left: 25px;}
+        .logo h1{color:#02c9aa;font-size:2rem;font-weight:800;margin:0;text-shadow:1px 2px 8px #6c2eb722;letter-spacing:1px;}
+        .hero{margin-top:80px;padding:4rem 0;background:linear-gradient(135deg,#02c9aa 0%,#6c2eb7 100%);display:flex;align-items:center;justify-content:center;min-height:50vh;max-width:1200px;margin-left:auto;margin-right:auto;border-radius:24px;box-shadow:0 8px 32px rgba(2,201,170,0.08);}
+        .hero-content h1{color:#02c9aa;font-size:2.8rem;font-weight:900;margin-bottom:1rem;letter-spacing:1px;}
+        #home.hero .hero-content p { color: #000 !important; }
+        .hero-content p{font-size:1.2rem;margin-bottom:2rem;line-height:1.7;}
+        .section-header h2{color:#02c9aa;font-size:2.2rem;font-weight:800;letter-spacing:1px;}
+        .section-header p{color:#02c9aa;font-size:1.1rem;}
+        .footer-bottom { width: 100%; text-align: center; padding: 1em 0; background: #02c9aa; color: #fff; font-size: 1rem; }
+    </style>
+    
+    <link rel="stylesheet" href="styles-optimized.css">
+    
+    <!-- Favicon and app icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main" class="skip-link sr-only">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-flex">
+                <div class="logo">
+                    <img src="images/The House of Humanity-logo3.jpg" alt="The House Of Humanity Logo" class="logo-img" width="100" height="100">
+                    <h1>The House Of Humanity</h1>
+                </div>
+                <div class="nav-menu-flex">
+                    <ul class="nav-menu" id="nav-menu" role="menubar">
+                        <li role="none"><a href="#home" class="nav-link" role="menuitem">Home</a></li>
+                        <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                        <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
+                        <li role="none"><a href="#events" class="nav-link" role="menuitem">Events</a></li>
+                        <li role="none"><a href="#volunteer" class="nav-link" role="menuitem">Volunteer</a></li>
+                        <li role="none"><a href="#donate" class="nav-link" role="menuitem">Donate</a></li>
+                        <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+                    </ul>
+                    <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" role="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-heading">
+            <img src="images/The House of Humanity-logo3.jpg" alt="The House of Humanity Logo" width="320" height="320" loading="eager">
+            <div class="hero-content">
+                <h1 id="hero-heading" class="sr-only">Welcome to The House of Humanity</h1>
+                <p>Welcome to The House of Humanity, a beacon of hope and compassion committed to Restoring Dignity and Renewing Dreams. Our charity is a haven for homeless families and domestic abuse victims seeking refuge and support. Founded by Bridget Charles, a retired Veteran, our mission goes beyond providing shelter—we offer a comprehensive environment where families can access resources, build resilience, and achieve well-being. We work with local businesses, educational institutions, and volunteers to build a network of support that extends beyond immediate aid. Join us in creating a lasting difference and a path to dignity for every individual and family.</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section" aria-labelledby="about-heading">
+            <div class="about-text text-center">
+                <h1 id="about-heading" class="text-center">About The House of Humanity</h1>
+                <p class="subtitle text-center">Restoring dignity and renewing dreams for families in need</p>
+                <h2 class="text-center">Our Mission</h2>
+                <p class="text-center">Our mission is clear and unchanging: Renewing Dreams, Restoring Dignity. We strive to be a cornerstone in the lives of homeless families and victims of domestic violence, providing them with the support needed to overcome adversity. Families can rebuild their lives with the assurance of privacy and security through our safe haven. Our core values revolve around compassion, empowerment, and community support. We believe in fostering an environment that not only provides shelter but also equips families with the tools and programs necessary to achieve their goals for survival and long-term stability.</p>
+                <h2 class="text-center">Our Vision</h2>
+                <p class="text-center">We envision a future in which everyone, regardless of circumstance, has a place to call home—a safe haven where aspirations may be revived and dignity can be restored. We aspire to be a positive force for change, building communities where empathy and collective well-being are valued.</p>
+            </div>
+            <div class="about-image">
+                <img src="images/BridgetCharles.jpeg" alt="Founder Bridget Charles" width="340" height="340" loading="lazy">
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section" aria-labelledby="services-heading">
+            <div class="services-header">
+                <h2 id="services-heading">Our Services</h2>
+                <p>Comprehensive support for families facing homelessness and domestic violence</p>
+            </div>
+            <div class="services-grid-stack grid-3col">
+                <article class="service-card">
+                    <img src="images/shelter.jpg" alt="Emergency Shelter Assistance" width="220" height="140" loading="lazy">
+                    <h3>Emergency Shelter Assistance</h3>
+                    <p>Providing immediate shelter for homeless families and domestic violence victims, ensuring a secure and supportive environment.</p>
+                </article>
+                <article class="service-card">
+                    <img src="images/cannedgood1.jpg" alt="Food donations - Essential items for families" width="220" height="140" loading="lazy">
+                    <h3>Food Donations</h3>
+                    <p>We accept non-perishable food items, fresh produce, and hygiene products. Drop-off times are Monday-Friday 9AM-5PM.</p>
+                    <div class="needed-items">
+                        <h4>Most Needed Items:</h4>
+                        <ul>
+                            <li>Canned proteins (tuna, chicken, beans)</li>
+                            <li>Rice and pasta</li>
+                            <li>Baby food and formula</li>
+                            <li>Personal hygiene items</li>
+                            <li>Fresh fruits and vegetables</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="service-card">
+                    <img src="images/wellness.jpg" alt="Well-being Programs" width="220" height="140" loading="lazy">
+                    <h3>Well-being Programs</h3>
+                    <p>Offering programs and services focused on promoting the optimal well-being of families, including physical, emotional, and mental health support.</p>
+                </article>
+                <article class="service-card">
+                    <img src="images/creditrepair.jpg" alt="Credit Repair Services" width="220" height="140" loading="lazy">
+                    <h3>Credit Repair Services</h3>
+                    <p>Helping families rebuild their financial stability through credit repair, financial education, and access to resources.</p>
+                    <a href="https://purplecreditrepair.com/index.html" target="_blank" rel="noopener" class="credit-link">Discover how Purple Credit Repair can help you achieve financial freedom &mdash; Click here to learn more!</a>
+                </article>
+                <article class="service-card">
+                    <img src="images/domestic.jpg" alt="Support Services" width="220" height="140" loading="lazy">
+                    <h3>Support Services</h3>
+                    <p>Specialized services for victims of domestic violence, including counseling, and a safe, confidential space for rebuilding lives.</p>
+                </article>
+                <article class="service-card">
+                    <img src="images/holiday.jpg" alt="Holiday programs - Special seasonal food distributions" width="300" height="200" loading="lazy">
+                    <h3>Holiday Programs</h3>
+                    <p>Special holiday meal distributions including Thanksgiving turkeys, Christmas food boxes, and back-to-school supplies for children.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Volunteer Section -->
+        <section id="volunteer" class="volunteer-section" aria-labelledby="volunteer-heading">
+            <div class="volunteer-flex">
+                <div class="volunteer-video-wrap">
+                    <video width="100%" height="auto" controls poster="images/GroupRun4Humanity.jpg" class="volunteer-video" preload="metadata">
+                        <source src="images/HOH 5k Walk.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="volunteer-info">
+                    <h2 id="volunteer-heading" class="volunteer-title">Get Involved</h2>
+                    <p class="volunteer-desc">We believe in the power of community. Volunteers, partners, and supporters are essential to our mission. Join us in making a difference—whether through volunteering, donations, or spreading awareness, your involvement helps restore dignity and renew dreams for families in need.</p>
+                    <a href="#contact" class="btn btn-primary">Sign Up to Volunteer</a>
+                </div>
+                <div class="volunteer-img-wrap">
+                    <img src="images/GroupRun4Humanity.jpg" alt="Volunteers at The House of Humanity" width="100%" height="auto" loading="lazy" class="volunteer-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="events-section" aria-labelledby="events-heading">
+            <div class="events-header events-header-style">
+                <h2 id="events-heading">Upcoming Events</h2>
+                <p>Join us at our upcoming events to support our mission and connect with the community!</p>
+            </div>
+            <div class="events-list">
+                <div class="event-card">
+                    <img src="images/Upcoming event.png" alt="Upcoming Event" class="event-image-clickable event-image-clickable-style">
+                    <h3 class="event-title-style">Car and Bike Show</h3>
+                    <p class="event-date-style">September 13, 2025</p>
+                    <p class="event-description-style">Come out and enjoy a day of fun, food, and community spirit!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Form Section -->
+        <section class="donation-section" aria-labelledby="donation-heading">
+            <div class="donation-header">
+                <h2 id="donation-heading" class="donation-title donation-title-style">Make Your Donation</h2>
+                <p class="donation-desc donation-desc-style">Every donation helps us continue our mission of Renewing Dreams, Restoring Dignity. Your support enables us to provide secure family shelters and essential services that help homeless families and domestic violence victims rebuild their lives.</p>
+            </div>
+            <div class="donation-benefits-wrap">
+                <h3 class="donation-benefits-title donation-benefits-title-style">Why Donate to Us?</h3>
+                <div class="donation-benefits-grid donation-benefits-grid-style">
+                    <div class="donation-benefit">100% of funds go directly to family services</div>
+                    <div class="donation-benefit">Specialized support for domestic violence victims</div>
+                    <div class="donation-benefit">Transparent reporting on family outcomes</div>
+                    <div class="donation-benefit">Regular updates on lives transformed</div>
+                </div>
+                
+                <!-- Easy Payment Options Section -->
+                <section id="donate" class="payment-options-section" aria-labelledby="payment-heading">
+                    <h2 id="payment-heading">Easy Payment Options</h2>
+                    <p>Choose your preferred method to donate instantly:</p>
+                    <div class="payment-methods">
+                        <!-- PayPal -->
+                        <div class="payment-method">
+                            <div class="payment-divider"></div>
+                            <h3>PayPal</h3>
+                            <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID" target="_blank" rel="noopener" aria-label="Donate via PayPal">
+                                <img src="images/Paypal_QR_Code.jfif" alt="PayPal QR Code" class="payment-qr">
+                            </a>
+                            <p>Scan to Pay</p>
+                        </div>
+                        
+                        <!-- Cash -->
+                        <div class="payment-method">
+                            <div class="payment-divider"></div>
+                            <h3>Cash</h3>
+                            <img src="images/donations.jpg" alt="Cash Payment" class="payment-image">
+                            <p>Give cash at our location or events</p>
+                        </div>
+                        
+                        <!-- Checks -->
+                        <div class="payment-method">
+                            <div class="payment-divider"></div>
+                            <h3>Checks</h3>
+                            <img src="images/check.jpg" alt="Check Payment" class="payment-image">
+                            <p>Make checks payable to The House of Humanity</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+            <div class="contact-header">
+                <h2 id="contact-heading">Contact Us</h2>
+                <p>We're here to help and answer any questions you may have about The House of Humanity and our programs.</p>
+            </div>
+            <div class="contact-form-container">
+                <div class="contact-form-title">Send us a Message</div>
+                <form action="https://formspree.io/f/xwkgyyqg" method="POST" class="contact-form" novalidate>
+                    <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+                    <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+                    <select name="topic" required aria-label="Select a Topic">
+                        <option value="">Select a Topic</option>
+                        <option value="Volunteer Opportunities">Volunteer Opportunities</option>
+                        <option value="Monetary Donation">Monetary Donation</option>
+                        <option value="Request Services">Request Services</option>
+                        <option value="Partnership Inquiry">Partnership Inquiry</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <textarea name="message" rows="5" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                    <input type="hidden" name="_subject" value="Message from thehouseofhumanity.org">
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-main">
+            <div class="footer-section">
+                <h3>The House Of Humanity</h3>
+                <p>Serving our community with dignity, respect, and compassion. No one should go hungry.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#volunteer">Volunteer</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <div>
+                    <address>
+                        440 Monticello Ave, Ste 1802 PMB 741562<br>
+                        Norfolk, Virginia 23510-2670
+                    </address>
+                </div>
+                <div>Phone: <a href="tel:+15408721873">(540) 872-1873</a></div>
+                <div>Email: <a href="mailto:info@thehouseofhumanity.org">info@thehouseofhumanity.org</a></div>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 The House Of Humanity. All rights reserved. | 501(c)(3) Non-Profit Organization</p>
+        </div>
+    </footer>
+
+    <!-- Event Image Modal Overlay -->
+    <div id="eventImageModal" class="event-image-modal" style="display:none;" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <img id="eventModalImg" src="images/Upcoming event.png" alt="Upcoming Event Enlarged">
+    </div>
+
+    <!-- JavaScript -->
+    <script defer>
+        // Enhanced event image click-to-enlarge with accessibility
+        document.addEventListener('DOMContentLoaded', function() {
+            var eventImg = document.querySelector('.event-image-clickable');
+            var modal = document.getElementById('eventImageModal');
+            var modalImg = document.getElementById('eventModalImg');
+            
+            if (eventImg && modal && modalImg) {
+                eventImg.addEventListener('click', function() {
+                    modal.style.display = 'flex';
+                    modalImg.src = eventImg.src;
+                    modalImg.alt = eventImg.alt + ' - Enlarged View';
+                    document.body.style.overflow = 'hidden';
+                    modal.focus();
+                });
+                
+                // Close modal on click or escape key
+                modal.addEventListener('click', closeModal);
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.style.display === 'flex') {
+                        closeModal();
+                    }
+                });
+                
+                function closeModal() {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    eventImg.focus();
+                }
+            }
+        });
+
+        // Navigation menu toggle for mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            var navToggle = document.getElementById('nav-toggle');
+            var navMenu = document.getElementById('nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    var isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => {
+                img.classList.add('lazy-load');
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
