@@ -361,7 +361,11 @@
 
 .about-text {
     flex: 1 1 0;
-    text-align: left;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .about-text h1 {
@@ -370,6 +374,7 @@
     font-weight: 800;
     margin-bottom: 0.5rem;
     font-family: 'Inter', sans-serif;
+    text-align: center !important;
 }
 
 .about-text p.subtitle {
@@ -377,6 +382,7 @@
     font-size: 1.25rem;
     margin-bottom: 2.5rem;
     font-weight: 400;
+    text-align: center !important;
 }
 
 .about-text h2 {
@@ -384,6 +390,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    text-align: center !important;
 }
 
 .about-text p {
@@ -391,7 +398,10 @@
     font-size: 1.08rem;
     line-height: 1.8;
     margin-bottom: 2rem;
-    text-align: left;
+    text-align: center !important;
+    max-width: 800px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .about-image {
@@ -3372,5 +3382,146 @@ a:focus {
   .logo-img {
     height: 30px !important;
     max-height: 30px !important;
+  }
+}
+
+/* Navigation fixes for medium screens (768px-1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navbar {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .nav-flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    background-color: transparent !important;
+    width: auto !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    gap: var(--spacing-lg) !important;
+  }
+  
+  .nav-toggle {
+    display: none !important;
+  }
+  
+  .nav-link {
+    display: block !important;
+    color: var(--text-dark) !important;
+    text-decoration: none !important;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    font-weight: 500 !important;
+    transition: color 0.3s ease !important;
+  }
+}
+
+/* Events section centering fixes */
+.events-section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.events-list {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.event-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  .events-section {
+    padding: 32px 16px !important;
+    margin: 32px auto !important;
+  }
+  
+  .event-card {
+    padding: 1.5rem 1rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .events-section {
+    max-width: 700px !important;
+    padding: 48px 40px !important;
+  }
+}
+
+/* Universal text centering utility */
+.text-center {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* About section responsive centering */
+@media (max-width: 768px) {
+  .about-section {
+    text-align: center !important;
+    padding: 32px 16px 0 16px !important;
+  }
+  
+  .about-text {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  .about-text h1 {
+    font-size: 2.2rem !important;
+  }
+  
+  .about-text p {
+    font-size: 1rem !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about-section {
+    text-align: center !important;
+    padding: 48px 32px 0 32px !important;
+  }
+  
+  .about-text {
+    text-align: center !important;
+  }
+  
+  .about-text p {
+    max-width: 700px !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .about-section {
+    text-align: center !important;
+  }
+  
+  .about-text {
+    text-align: center !important;
   }
 }
