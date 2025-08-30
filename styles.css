@@ -2258,6 +2258,18 @@ nav menu a {
     border: 0;
 }
 
+/* Utility: completely hide elements that should not take space (e.g., background iframes) */
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 /* Focus indicators */
 button:focus,
 input:focus,

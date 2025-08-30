@@ -119,66 +119,40 @@
                 </div>
                 
                 <div class="contact-form-container">
-                    <form class="contact-form">
-                        <h3>Send Us a Message</h3>
-                        
-                        <div class="form-group">
-                            <label for="contact-name">Full Name *</label>
-                            <input type="text" id="contact-name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-email">Email Address *</label>
-                            <input type="email" id="contact-email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-phone">Phone Number</label>
-                            <input type="tel" id="contact-phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-subject">How can we help? *</label>
-                            <select id="contact-subject" name="subject" required>
-                                <option value="">Please select...</option>
-                                <option value="assistance">I need assistance</option>
-                                <option value="volunteer">I want to volunteer</option>
-                                <option value="donate">I want to make a donation</option>
-                                <option value="partnership">Partnership opportunity</option>
-                                <option value="media">Media inquiry</option>
-                                <option value="general">General question</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="urgency">Urgency Level</label>
-                            <select id="urgency" name="urgency">
-                                <option value="routine">Routine (response within 2-3 days)</option>
-                                <option value="urgent">Urgent (response within 24 hours)</option>
-                                <option value="emergency">Emergency (immediate response needed)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-message">Message *</label>
-                            <textarea id="contact-message" name="message" rows="5" required placeholder="Please provide details about your inquiry..."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="newsletter" value="yes">
-                                <span class="checkmark"></span>
-                                Subscribe to our newsletter for updates
-                            </label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        
-                        <div class="form-note">
-                            <p>* Required fields. We typically respond within 24-48 hours.</p>
-                        </div>
-                    </form>
+                                        <div class="contact-content">
+                                                <!-- Contact Form - Optimized -->
+                                                <form id="contactForm" class="contact-form" action="XXXXXXXXXXXXXX" method="POST" target="formFrame" novalidate>
+                                                    <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
+                                                    <div class="form-group">
+                                                        <input type="text" name="Name" placeholder="Your Name" required aria-required="true" autocomplete="name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" name="Email" placeholder="Your Email" required aria-required="true" autocomplete="email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="phone" class="sr-only">Phone</label>
+                                                        <input type="tel" id="phone" name="Phone" placeholder="Your Phone" aria-required="false" autocomplete="tel" inputmode="tel">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="topic" class="sr-only">Topic</label>
+                                                        <select id="topic" name="Topic" required aria-required="true">
+                                                            <option value="">— — — Select a topic — — —</option>
+                                                            <option value="Volunteer Opportunities">Volunteer Opportunities</option>
+                                                            <option value="Food or Monetary Donation">Food or Monetary Donation</option>
+                                                            <option value="Request Services">Request Services</option>
+                                                            <option value="Partnership Inquiry">Partnership Inquiry</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <textarea name="Message" placeholder="Your Message" rows="5"></textarea>
+                                                    </div>
+                                                    <div class="form-group text-center">
+                                                        <button type="submit" class="btn btn-primary">Send</button>
+                                                    </div>
+                                                </form>
+                                                <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden"></iframe>
+                                        </div>
                 </div>
             </div>
         </div>
