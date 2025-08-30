@@ -182,6 +182,12 @@ function initForms() {
         const iframeId = form.getAttribute('target');
         const iframe = usesIframe ? document.getElementById(iframeId) : null;
 
+        // Populate PageURL hidden field if present
+        const pageUrlField = form.querySelector('input[name="PageURL"]');
+        if (pageUrlField) {
+            try { pageUrlField.value = window.location.href; } catch (_) {}
+        }
+
         // Real-time validation with debouncing
         const inputs = form.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
@@ -190,42 +196,77 @@ function initForms() {
         });
 
         if (usesIframe && (form.getAttribute('method') || '').toUpperCase() === 'POST') {
-            // Validate then allow native submit to iframe
             form.addEventListener('submit', function(e) {
                 // Honeypot check
                 const honeypot = form.querySelector('input[name="website"]');
                 if (honeypot && honeypot.value) {
                     e.preventDefault();
-                    return; // silently drop bots
-                }
-
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
-                if (!validateContactForm(data)) {
-                    e.preventDefault();
                     return;
                 }
 
+                // Validate
+                const data = Object.fromEntries(new FormData(form));
+                if (!validateContactForm(data)) {
+                    e.preventDefault();
+                    showNotification('Please fix the highlighted fields.', 'error');
+                    return;
+                }
+
+                // Show loading state
                 const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn ? submitBtn.textContent : '';
                 if (submitBtn) {
-                    submitBtn.dataset.originalText = submitBtn.textContent;
+                    submitBtn.dataset.originalText = originalText;
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
                 }
-                // Let the browser submit into the iframe
-            });
 
-            if (iframe) {
-                iframe.addEventListener('load', function() {
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    if (submitBtn) {
-                        submitBtn.textContent = submitBtn.dataset.originalText || 'Send';
-                        submitBtn.disabled = false;
+                // Fallback timer in case iframe load is blocked
+                if (iframe) {
+                    if (iframe._thohListener) {
+                        iframe.removeEventListener('load', iframe._thohListener);
                     }
-                    showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-                    form.reset();
-                });
-            }
+                    iframe._thohListener = function() {
+                        try {
+                            // Try to read iframe body text
+                            const doc = iframe.contentDocument || iframe.contentWindow?.document;
+                            const text = (doc && doc.body) ? doc.body.textContent.trim() : '';
+                            const ok = /ok/i.test(text);
+                            if (ok) {
+                                showNotification('Thanks — we got your message!', 'success');
+                                form.reset();
+                            } else if (text) {
+                                showNotification('There was an issue sending your message. Please try again.', 'error');
+                            } else {
+                                // Empty but loaded – assume success for Apps Script minimal responses
+                                showNotification('Thanks — we got your message!', 'success');
+                                form.reset();
+                            }
+                        } catch (_) {
+                            // Cross-origin read may fail; assume success on load
+                            showNotification('Thanks — we got your message!', 'success');
+                            form.reset();
+                        } finally {
+                            if (submitBtn) {
+                                submitBtn.textContent = submitBtn.dataset.originalText || 'Send';
+                                submitBtn.disabled = false;
+                            }
+                        }
+                    };
+                    iframe.addEventListener('load', iframe._thohListener, { once: true });
+
+                    // Also set a timeout fallback (5s) in case load never fires
+                    clearTimeout(form._thohTimeout);
+                    form._thohTimeout = setTimeout(() => {
+                        if (submitBtn) {
+                            submitBtn.textContent = submitBtn.dataset.originalText || 'Send';
+                            submitBtn.disabled = false;
+                        }
+                        showNotification('Thanks — if you don\'t hear from us shortly, please email info@thehouseofhumanity.org.', 'info');
+                    }, 5000);
+                }
+                // Allow native submit into iframe
+            });
         } else {
             // Legacy/dev forms without iframe
             form.addEventListener('submit', handleContactSubmit);
