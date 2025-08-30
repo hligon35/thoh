@@ -179,7 +179,8 @@ function initForms() {
     const contactForms = document.querySelectorAll('form.contact-form');
     contactForms.forEach(form => {
         const usesIframe = form.getAttribute('target') === 'formFrame';
-        const iframe = usesIframe ? document.getElementById(form.getAttribute('target')) : null;
+        const iframeId = form.getAttribute('target');
+        const iframe = usesIframe ? document.getElementById(iframeId) : null;
 
         // Real-time validation with debouncing
         const inputs = form.querySelectorAll('input, select, textarea');
@@ -188,8 +189,8 @@ function initForms() {
             input.addEventListener('input', debounce(clearFieldError, 300));
         });
 
-        if (usesIframe && form.getAttribute('method')?.toUpperCase() === 'POST') {
-            // Let native submit happen for iframe-target forms, but validate first
+        if (usesIframe && (form.getAttribute('method') || '').toUpperCase() === 'POST') {
+            // Validate then allow native submit to iframe
             form.addEventListener('submit', function(e) {
                 // Honeypot check
                 const honeypot = form.querySelector('input[name="website"]');
@@ -211,10 +212,9 @@ function initForms() {
                     submitBtn.textContent = 'Sending...';
                     submitBtn.disabled = true;
                 }
-                // allow native submit to iframe
+                // Let the browser submit into the iframe
             });
 
-            // Handle iframe load as success callback
             if (iframe) {
                 iframe.addEventListener('load', function() {
                     const submitBtn = form.querySelector('button[type="submit"]');
@@ -227,7 +227,7 @@ function initForms() {
                 });
             }
         } else {
-            // Legacy/dev forms: use simulated handler
+            // Legacy/dev forms without iframe
             form.addEventListener('submit', handleContactSubmit);
         }
     });
@@ -276,7 +276,7 @@ function handleContactSubmit(event) {
     
     // Track form submission
     trackEvent('contact_form_submit', {
-        subject: data.subject || data.Topic,
+        subject: data.subject || data.Subject || data.topic || data.Topic,
         urgency: data.urgency
     });
 }
@@ -350,7 +350,6 @@ function handleNewsletterSubmit(event) {
 // Form validation functions
 function validateContactForm(data) {
     const errors = [];
-    // Support multiple naming conventions
     const name = (data.name || data.Name || '').trim();
     const email = (data.email || data.Email || '').trim();
     const subject = (data.subject || data.Subject || data.topic || data.Topic || '').trim();
@@ -365,7 +364,8 @@ function validateContactForm(data) {
     if (!subject) {
         errors.push('Please select how we can help you.');
     }
-    if (!message || message.length < 10) {
+    // Make message optional; if provided enforce a minimum length
+    if (message && message.length < 10) {
         errors.push('Message must be at least 10 characters long.');
     }
 
