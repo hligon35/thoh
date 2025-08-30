@@ -175,18 +175,62 @@ function initNavigation() {
 
 // Form handling and validation with enhanced UX
 function initForms() {
-    // Contact form with improved validation
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleContactSubmit);
-        
+    // Contact forms (support multiple and iframe-target native submissions)
+    const contactForms = document.querySelectorAll('form.contact-form');
+    contactForms.forEach(form => {
+        const usesIframe = form.getAttribute('target') === 'formFrame';
+        const iframe = usesIframe ? document.getElementById(form.getAttribute('target')) : null;
+
         // Real-time validation with debouncing
-        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        const inputs = form.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', validateField);
             input.addEventListener('input', debounce(clearFieldError, 300));
         });
-    }
+
+        if (usesIframe && form.getAttribute('method')?.toUpperCase() === 'POST') {
+            // Let native submit happen for iframe-target forms, but validate first
+            form.addEventListener('submit', function(e) {
+                // Honeypot check
+                const honeypot = form.querySelector('input[name="website"]');
+                if (honeypot && honeypot.value) {
+                    e.preventDefault();
+                    return; // silently drop bots
+                }
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                if (!validateContactForm(data)) {
+                    e.preventDefault();
+                    return;
+                }
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.dataset.originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                }
+                // allow native submit to iframe
+            });
+
+            // Handle iframe load as success callback
+            if (iframe) {
+                iframe.addEventListener('load', function() {
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.textContent = submitBtn.dataset.originalText || 'Send';
+                        submitBtn.disabled = false;
+                    }
+                    showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+                    form.reset();
+                });
+            }
+        } else {
+            // Legacy/dev forms: use simulated handler
+            form.addEventListener('submit', handleContactSubmit);
+        }
+    });
 
     // Donation form with enhanced security
     const donationForm = document.querySelector('.donation-form');
@@ -232,7 +276,7 @@ function handleContactSubmit(event) {
     
     // Track form submission
     trackEvent('contact_form_submit', {
-        subject: data.subject,
+        subject: data.subject || data.Topic,
         urgency: data.urgency
     });
 }
@@ -306,28 +350,29 @@ function handleNewsletterSubmit(event) {
 // Form validation functions
 function validateContactForm(data) {
     const errors = [];
-    
-    if (!data.name || data.name.trim().length < 2) {
+    // Support multiple naming conventions
+    const name = (data.name || data.Name || '').trim();
+    const email = (data.email || data.Email || '').trim();
+    const subject = (data.subject || data.Subject || data.topic || data.Topic || '').trim();
+    const message = (data.message || data.Message || '').trim();
+
+    if (!name || name.length < 2) {
         errors.push('Name must be at least 2 characters long.');
     }
-    
-    if (!data.email || !isValidEmail(data.email)) {
+    if (!email || !isValidEmail(email)) {
         errors.push('Please enter a valid email address.');
     }
-    
-    if (!data.subject) {
+    if (!subject) {
         errors.push('Please select how we can help you.');
     }
-    
-    if (!data.message || data.message.trim().length < 10) {
+    if (!message || message.length < 10) {
         errors.push('Message must be at least 10 characters long.');
     }
-    
+
     if (errors.length > 0) {
         showNotification(errors.join(' '), 'error');
         return false;
     }
-    
     return true;
 }
 
