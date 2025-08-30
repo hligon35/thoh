@@ -231,12 +231,17 @@ function initForms() {
                             // Try to read iframe body text
                             const doc = iframe.contentDocument || iframe.contentWindow?.document;
                             const text = (doc && doc.body) ? doc.body.textContent.trim() : '';
-                            const ok = /ok/i.test(text);
-                            if (ok) {
+                            const isOK = /(ok|success)/i.test(text);
+                            const isError = /error/i.test(text);
+                            if (isOK) {
                                 showNotification('Thanks — we got your message!', 'success');
                                 form.reset();
-                            } else if (text) {
+                            } else if (isError) {
                                 showNotification('There was an issue sending your message. Please try again.', 'error');
+                            } else if (text) {
+                                // Unknown non-empty response: assume success to avoid blocking users
+                                showNotification('Thanks — we got your message!', 'success');
+                                form.reset();
                             } else {
                                 // Empty but loaded – assume success for Apps Script minimal responses
                                 showNotification('Thanks — we got your message!', 'success');
