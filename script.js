@@ -247,6 +247,11 @@ function initForms() {
                             showNotification('Thanks — we got your message!', 'success');
                             form.reset();
                         } finally {
+                            // Clear fallback timer if set
+                            if (form._thohTimeout) {
+                                clearTimeout(form._thohTimeout);
+                                form._thohTimeout = null;
+                            }
                             if (submitBtn) {
                                 submitBtn.textContent = submitBtn.dataset.originalText || 'Send';
                                 submitBtn.disabled = false;

@@ -271,43 +271,57 @@
                 <p>We're here to help and answer any questions you may have about The House of Humanity and our programs.</p>
             </div>
             <div class="contact-form-container">
-                                <div class="contact-content">
-                                        <!-- Contact Form - Optimized -->
-                                        <form id="contactForm" class="contact-form" action="https://script.google.com/a/macros/thehouseofhumanity.org/s/AKfycbwpPyO46vn805G2uszKe6iIBMoTrBXjXrUExBB0haJrBODM09JhAHuTrpUehwoXsTbudg/exec" method="POST" target="formFrame" novalidate>
-                                            <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
-                                            <input type="hidden" name="Source" value="homepage">
-                                            <input type="hidden" name="PageURL" value="">
-                                            <div class="form-group">
-                                                <input type="text" name="Name" placeholder="Your Name" required aria-required="true" autocomplete="name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" name="Email" placeholder="Your Email" required aria-required="true" autocomplete="email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="phone" class="sr-only">Phone</label>
-                                                <input type="tel" id="phone" name="Phone" placeholder="Your Phone" aria-required="false" autocomplete="tel" inputmode="tel">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="topic" class="sr-only">Topic</label>
-                                                <select id="topic" name="Topic" required aria-required="true">
-                                                    <option value="">— — — Select a topic — — —</option>
-                                                    <option value="Volunteer Opportunities">Volunteer Opportunities</option>
-                                                    <option value="Food or Monetary Donation">Food or Monetary Donation</option>
-                                                    <option value="Request Services">Request Services</option>
-                                                    <option value="Partnership Inquiry">Partnership Inquiry</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea name="Message" placeholder="Your Message" rows="5"></textarea>
-                                            </div>
-                                            <div class="form-group text-center">
-                                                <button type="submit" class="btn btn-primary">Send</button>
-                                            </div>
-                                        </form>
-                                        <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden" hidden tabindex="-1" aria-hidden="true"></iframe>
-                                </div>
-            </div>
+  <div class="contact-content">
+    <!-- Contact Form - Optimized -->
+    <form id="contactForm" class="contact-form"
+          action="https://script.google.com/a/macros/thehouseofhumanity.org/s/AKfycbxe6t2EFktT921yVrWWLzBAFFS1TGRRbADmwqIDbtqd6s4zP_fMDRXZZUZqco84Rx8R6Q/exec"
+          method="POST" novalidate>
+
+      <!-- Honeypot -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
+
+      <!-- Hidden metadata -->
+      <input type="hidden" name="Source" value="homepage">
+      <input type="hidden" name="PageURL" value="">
+
+      <div class="form-group">
+        <input type="text" name="Name" placeholder="Your Name" required aria-required="true" autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <input type="email" name="Email" placeholder="Your Email" required aria-required="true" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label for="phone" class="sr-only">Phone</label>
+        <input type="tel" id="phone" name="Phone" placeholder="Your Phone" autocomplete="tel" inputmode="tel">
+      </div>
+
+      <div class="form-group">
+        <label for="topic" class="sr-only">Topic</label>
+        <select id="topic" name="Topic" required aria-required="true">
+          <option value="">— — — Select a topic — — —</option>
+          <option value="Volunteer Opportunities">Volunteer Opportunities</option>
+          <option value="Food or Monetary Donation">Food or Monetary Donation</option>
+          <option value="Request Services">Request Services</option>
+          <option value="Partnership Inquiry">Partnership Inquiry</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <textarea name="Message" placeholder="Your Message" rows="5"></textarea>
+      </div>
+
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+
+      <!-- Inline confirmation / error message -->
+      <div id="formMessage" style="display:none; margin-top:10px; font-weight:bold;"></div>
+    </form>
+  </div>
+</div>
         </section>
     </main>
 
