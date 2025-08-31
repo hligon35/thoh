@@ -212,6 +212,15 @@ function initForms() {
                     return;
                 }
 
+                // Ensure Subject mirrors Topic for backend compatibility
+                try {
+                    const subj = form.querySelector('input[name="Subject"]');
+                    const topicSel = form.querySelector('[name="Topic"]');
+                    if (subj && topicSel) {
+                        subj.value = topicSel.value || '';
+                    }
+                } catch (_) {}
+
                 // Show loading state
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const originalText = submitBtn ? submitBtn.textContent : '';
