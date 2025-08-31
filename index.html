@@ -72,6 +72,7 @@
             justify-content: center !important;
           }
         }
+        #formMessage{display:none;margin-top:10px;font-weight:bold;}
     </style>
     
     <link rel="stylesheet" href="styles.css">
@@ -302,13 +303,10 @@
                       <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">Send</button>
                       </div>
-                    </form>
-                    <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden"></iframe>
-
       <!-- Inline confirmation / error message -->
-      <div id="formMessage" style="display:none; margin-top:10px; font-weight:bold;"></div>
-    </form>
-    <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden" hidden tabindex="-1" aria-hidden="true"></iframe>
+      <div id="formMessage"></div>
+      <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden" hidden tabindex="-1" aria-hidden="true"></iframe>
+      <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden" hidden tabindex="-1" aria-hidden="true"></iframe>
   </div>
 </div>
         </section>
