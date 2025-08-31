@@ -195,7 +195,7 @@ function initForms() {
             input.addEventListener('input', debounce(clearFieldError, 300));
         });
 
-        if (usesIframe && (form.getAttribute('method') || '').toUpperCase() === 'POST') {
+    if (usesIframe && (form.getAttribute('method') || '').toUpperCase() === 'POST') {
             form.addEventListener('submit', function(e) {
                 // Honeypot check
                 const honeypot = form.querySelector('input[name="website"]');
@@ -206,9 +206,9 @@ function initForms() {
 
                 // Validate
                 const data = Object.fromEntries(new FormData(form));
-                if (!validateContactForm(data)) {
+        if (!validateContactForm(data, form)) {
                     e.preventDefault();
-                    showNotification('Please fix the highlighted fields.', 'error');
+            showNotification('Please fill the required fields: Name, Email, and Topic.', 'error');
                     return;
                 }
 
@@ -316,7 +316,7 @@ function handleContactSubmit(event) {
     const data = Object.fromEntries(formData);
     
     // Validate form
-    if (!validateContactForm(data)) {
+    if (!validateContactForm(data, form)) {
         return;
     }
     
@@ -408,29 +408,38 @@ function handleNewsletterSubmit(event) {
 }
 
 // Form validation functions
-function validateContactForm(data) {
+function validateContactForm(data, form) {
     const errors = [];
     const name = (data.name || data.Name || '').trim();
     const email = (data.email || data.Email || '').trim();
     const subject = (data.subject || data.Subject || data.topic || data.Topic || '').trim();
-    const message = (data.message || data.Message || '').trim();
+    // Message is optional; do not block submission for short messages
+    // const message = (data.message || data.Message || '').trim();
+
+    const markError = (selector, message) => {
+        if (!form) return;
+        const field = form.querySelector(selector);
+        if (field) {
+            showFieldError(field, message);
+            field.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    };
 
     if (!name || name.length < 2) {
         errors.push('Name must be at least 2 characters long.');
+        markError('[name="Name"], [name="name"]', 'Please enter your name (min 2 characters).');
     }
     if (!email || !isValidEmail(email)) {
         errors.push('Please enter a valid email address.');
+        markError('[name="Email"], [name="email"]', 'Please enter a valid email address.');
     }
     if (!subject) {
         errors.push('Please select how we can help you.');
-    }
-    // Make message optional; if provided enforce a minimum length
-    if (message && message.length < 10) {
-        errors.push('Message must be at least 10 characters long.');
+        markError('[name="Topic"]', 'Please select a topic.');
     }
 
     if (errors.length > 0) {
-        showNotification(errors.join(' '), 'error');
+        // Also add a generic notification; specific field errors are shown inline
         return false;
     }
     return true;
