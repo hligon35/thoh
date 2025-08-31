@@ -491,6 +491,8 @@
 /* Base styles with performance optimizations */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -681,6 +683,8 @@ img {
 
 .navbar.scrolled {
     background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: var(--shadow-md);
 }
 
@@ -747,27 +751,6 @@ nav menu a {
     color: var(--text-primary);
     font-weight: 500;
     transition: color var(--transition-fast);
-}
-
-/* Brand logo/title in navbar */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    text-decoration: none;
-}
-
-.logo-img {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-    border-radius: var(--radius-sm);
-}
-
-.site-title {
-    font-size: 1.25rem;
-    color: var(--primary-color);
-    font-weight: 700;
 }
 
 .nav-link {
@@ -1606,7 +1589,6 @@ nav menu a {
     border: 2px solid var(--border-color);
     letter-spacing: 1px;
     margin-top: var(--spacing-sm);
-    -webkit-user-select: all;
     user-select: all;
     cursor: pointer;
     transition: all var(--transition-fast);
@@ -1978,17 +1960,6 @@ nav menu a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-.navbar.scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: var(--shadow-md);
-}
-
-@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
-    .navbar.scrolled {
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-}
     gap: var(--spacing-xl);
     text-align: center;
 }
@@ -2829,7 +2800,6 @@ a:focus {
     border-radius: var(--radius-xl);
     padding: var(--spacing-xxl);
     text-align: center;
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
