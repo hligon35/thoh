@@ -274,8 +274,8 @@
   <div class="contact-content">
     <!-- Contact Form - Optimized -->
     <form id="contactForm" class="contact-form"
-          action="https://script.google.com/a/macros/thehouseofhumanity.org/s/AKfycbxvG1NuUNpW4x3IxQJgMFNskxurldWCIizhUlG6OJeYTY6h4pYCl9ruRMX6Q5CZPvinfw/exec"
-          method="POST" novalidate>
+          action="https://script.google.com/macros/s/AKfycbxvG1NuUNpW4x3IxQJgMFNskxurldWCIizhUlG6OJeYTY6h4pYCl9ruRMX6Q5CZPvinfw/exec"
+          method="POST" target="formFrame" novalidate>
 
       <!-- Honeypot -->
       <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
@@ -320,6 +320,7 @@
       <!-- Inline confirmation / error message -->
       <div id="formMessage" style="display:none; margin-top:10px; font-weight:bold;"></div>
     </form>
+    <iframe name="formFrame" id="formFrame" title="hidden form submission" class="hidden" hidden tabindex="-1" aria-hidden="true"></iframe>
   </div>
 </div>
         </section>
