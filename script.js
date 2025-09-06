@@ -108,7 +108,8 @@ function initNavigation() {
             document.body.appendChild(backdrop);
         }
 
-        navToggle.addEventListener('click', function() {
+    // Toggle off-canvas menu, backdrop, and header state
+    navToggle.addEventListener('click', function() {
             const isExpanded = navMenu.classList.contains('active');
 
             navMenu.classList.toggle('active');
@@ -130,7 +131,7 @@ function initNavigation() {
             document.body.style.touchAction = !isExpanded ? 'none' : '';
         });
 
-    // Close mobile menu when clicking on a link
+    // Close menu when clicking a nav link (and restore state)
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
@@ -144,7 +145,7 @@ function initNavigation() {
             });
         });
 
-        // Close mobile menu when clicking outside (optimized)
+    // Close menu when clicking outside (optimized)
         document.addEventListener('click', function(event) {
             const isClickInsideNav = navMenu.contains(event.target) || navToggle.contains(event.target);
             if (!isClickInsideNav && navMenu.classList.contains('active')) {
@@ -168,10 +169,11 @@ function initNavigation() {
                 document.body.style.overflow = '';
                 document.body.style.touchAction = '';
                 document.querySelector('.nav-backdrop')?.classList.remove('active');
+                if (navbar) navbar.classList.remove('menu-open');
             }
         });
 
-        // Handle escape key
+    // Close on Escape for accessibility
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
