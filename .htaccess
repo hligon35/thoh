@@ -4,7 +4,7 @@
 # Enable mod_rewrite
 RewriteEngine On
 
-# Security Headers
+# Security Headers (non-breaking)
 <IfModule mod_headers.c>
     # HTTPS Security
     Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
@@ -21,8 +21,23 @@ RewriteEngine On
     # Referrer Policy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Content Security Policy
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'"
+    # Content Security Policy (Report-Only to avoid breaking current functionality)
+    # Notes:
+    # - Allow framed responses from Google Apps Script for the contact form's hidden iframe target
+    # - Allow form submissions to script.google.com
+    # - Keep broad https: allowances for images/connect to avoid breaking analytics/CDNs
+    # - Consider tightening once verified in production
+    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'self'; frame-src 'self' https://script.google.com; form-action 'self' https://script.google.com; upgrade-insecure-requests"
+
+    # Frame options (redundant with frame-ancestors but kept for legacy support)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Cross-Origin policies (safe defaults)
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+
+    # Permissions Policy (restrict powerful features by default)
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), accelerometer=(), gyroscope=(), magnetometer=(), payment=()"
 </IfModule>
 
 # Compression

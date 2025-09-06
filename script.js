@@ -65,6 +65,18 @@ document.addEventListener('DOMContentLoaded', function() {
     initDonationFeatures();
     initAccessibility();
     initAnalytics();
+    // Performance: register service worker if supported (no visual changes)
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            // Scope will be the site root since sw.js is at root
+            navigator.serviceWorker
+                .register('/sw.js')
+                .catch((err) => {
+                    // Silently ignore to avoid console noise in production
+                    // console.debug('SW registration failed', err);
+                });
+        });
+    }
 });
 
 // Navigation functionality with performance optimizations
@@ -73,29 +85,62 @@ function initNavigation() {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const navbar = document.querySelector('.navbar');
+    const header = document.querySelector('.header');
+
+    // Set a dynamic CSS var for header height so the menu positions correctly
+    const setHeaderHeightVar = () => {
+        const h1 = header ? header.getBoundingClientRect().height : 0;
+        const h2 = navbar ? navbar.getBoundingClientRect().height : 0;
+        const h = Math.max(h1, h2, 80);
+        document.documentElement.style.setProperty('--header-h', `${Math.round(h)}px`);
+    };
+    setHeaderHeightVar();
+    window.addEventListener('resize', debounce(setHeaderHeightVar, 150));
+    window.addEventListener('orientationchange', setHeaderHeightVar);
 
     // Mobile menu toggle with improved accessibility
     if (navToggle && navMenu) {
+        // Ensure a backdrop exists for dimming and easy outside tap close
+        let backdrop = document.querySelector('.nav-backdrop');
+        if (!backdrop) {
+            backdrop = document.createElement('div');
+            backdrop.className = 'nav-backdrop';
+            document.body.appendChild(backdrop);
+        }
+
         navToggle.addEventListener('click', function() {
             const isExpanded = navMenu.classList.contains('active');
-            
+
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
-            
+            backdrop.classList.toggle('active');
+            if (navbar) {
+                navbar.classList.toggle('menu-open', !isExpanded);
+                if (!isExpanded) {
+                    // Ensure no transform while menu is open
+                    navbar.style.transform = '';
+                }
+            }
+
             // Update ARIA attributes
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            
+            navToggle.setAttribute('aria-expanded', String(!isExpanded));
+
             // Prevent body scroll when menu is open
             document.body.style.overflow = !isExpanded ? 'hidden' : '';
+            document.body.style.touchAction = !isExpanded ? 'none' : '';
         });
 
-        // Close mobile menu when clicking on a link
+    // Close mobile menu when clicking on a link
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
+        document.body.style.touchAction = '';
+                const bd = document.querySelector('.nav-backdrop');
+                if (bd) bd.classList.remove('active');
+                if (navbar) navbar.classList.remove('menu-open');
             });
         });
 
@@ -107,6 +152,22 @@ function initNavigation() {
                 navToggle.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
+                document.body.style.touchAction = '';
+                const bd = document.querySelector('.nav-backdrop');
+                if (bd) bd.classList.remove('active');
+                if (navbar) navbar.classList.remove('menu-open');
+            }
+        });
+
+        // Close when tapping the backdrop
+        document.querySelector('.nav-backdrop')?.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                document.body.style.touchAction = '';
+                document.querySelector('.nav-backdrop')?.classList.remove('active');
             }
         });
 
@@ -117,7 +178,11 @@ function initNavigation() {
                 navToggle.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
+                document.body.style.touchAction = '';
                 navToggle.focus();
+                const bd = document.querySelector('.nav-backdrop');
+                if (bd) bd.classList.remove('active');
+                if (navbar) navbar.classList.remove('menu-open');
             }
         });
     }
@@ -137,10 +202,13 @@ function initNavigation() {
         
         // Hide/show navbar on scroll (optional) - optimized
         if (navbar) {
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Do not hide the navbar if the mobile menu is open
+            const menuOpen = navMenu && navMenu.classList.contains('active');
+            if (!menuOpen && scrollTop > lastScrollTop && scrollTop > 100) {
                 navbar.style.transform = 'translateY(-100%)';
             } else {
-                navbar.style.transform = 'translateY(0)';
+                // Remove inline transform to avoid creating a containing block
+                navbar.style.transform = '';
             }
         }
         
@@ -171,6 +239,29 @@ function initNavigation() {
             }
         });
     });
+
+    // Accessibility: indicate current page in nav
+    const updateAriaCurrent = () => {
+        try {
+            const currentURL = new URL(window.location.href);
+            navLinks.forEach((a) => {
+                a.removeAttribute('aria-current');
+                const href = a.getAttribute('href') || '';
+                const linkURL = new URL(href, currentURL.origin);
+                const samePath = linkURL.pathname === currentURL.pathname;
+                const bothNoHash = !linkURL.hash && !currentURL.hash;
+                const bothSameHash = linkURL.hash && linkURL.hash === currentURL.hash;
+                if (samePath && (bothNoHash || bothSameHash)) {
+                    a.setAttribute('aria-current', 'page');
+                }
+            });
+        } catch (_) {
+            // Ignore URL parsing errors
+        }
+    };
+    updateAriaCurrent();
+    window.addEventListener('hashchange', updateAriaCurrent);
+    window.addEventListener('popstate', updateAriaCurrent);
 }
 
 // Form handling and validation with enhanced UX

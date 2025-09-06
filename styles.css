@@ -203,23 +203,7 @@
   margin-bottom: 0.5rem;
   text-align: center;
 }
-/* Footer column spacing fix */
-.footer-main ul,
-.footer-main h4,
-.footer-main li {
-  margin: 0 !important;
-  padding: 0;
-}
-
-/* Force flush footer columns, remove all vertical gap */
-.footer-main > div {
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+/* Footer: keep spacing controlled by base styles; avoid over-resetting margins/padding */
 /* Service Cards 3-2 Grid Layout */
 .services-grid-stack {
   display: grid;
@@ -695,6 +679,11 @@ img {
     box-shadow: var(--shadow-md);
 }
 
+/* When the mobile menu is open, prevent transforms on the navbar that could clip fixed children */
+.navbar.menu-open {
+    transform: none !important;
+}
+
 .nav {
     max-width: 1200px;
     margin: 0 auto;
@@ -786,6 +775,9 @@ nav menu a {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 8px;
 }
 
 .nav-toggle .bar {
@@ -1650,6 +1642,12 @@ nav menu a {
 }
 
 @media (max-width: 768px) {
+    /* Tighter header spacing and smaller branding on mobile */
+    .navbar { padding: 0 12px; }
+    .nav-flex { gap: var(--spacing-sm); }
+    .logo { gap: 0.5rem; }
+    .logo-img { margin-left: 8px; }
+    .logo h1 { font-size: 1.25rem; }
     .qr-payment-options {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
@@ -1926,7 +1924,6 @@ nav menu a {
     gap: 2.5rem;
     align-items: start;
 }
-.footer-main > * { text-align: left; }
 .footer-main > * { text-align: center; }
 .footer-main h3 { font-size:1.3rem; font-weight:700; margin-bottom:0.7rem; }
 .footer-main a { color:#fff; text-decoration:none; }
@@ -1994,7 +1991,7 @@ nav menu a {
     display: block; /* stack title above list */
     text-align: center;
 }
-.footer-address .footer-indent { margin-left: 0; }
+/* Keep the intended indent for the second line of the address */
 .footer-links h4 { margin-bottom: 0.5rem; }
 .footer-links ul { list-style: none; padding: 0; margin: 0; }
 .footer-links li { margin: 0; padding: 0.25rem 0; }
@@ -2116,38 +2113,64 @@ nav menu a {
 }
 
 @media (max-width: 768px) {
+    /* Tighter header spacing and smaller branding on mobile */
+    .navbar { padding: 0 12px; }
+    .nav-flex { gap: var(--spacing-sm); }
+    .logo { gap: 0.5rem; }
+    .logo-img { margin-left: 8px; height: 56px; }
+    .logo h1 { font-size: 1.25rem; }
+
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 80px;
+        right: 0;
+        top: var(--header-h, 80px); /* dynamic header height */
+        bottom: 0; /* fill viewport below header */
+        height: calc(100vh - var(--header-h, 80px));
+        display: flex;
         flex-direction: column;
+        gap: 0; /* separators handle spacing */
         background-color: var(--text-light);
         width: 100%;
+        overflow-y: auto; /* allow scrolling menu items */
         text-align: center;
-        transition: 0.3s;
+        transition: left 0.3s ease;
         box-shadow: var(--shadow-md);
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-md) 0;
+        z-index: 3000; /* ensure above page content and header */
     }
 
-    .nav-menu.active {
+    .nav-menu.active { left: 0; }
+
+    .nav-toggle { display: flex; z-index: 3100; }
+    .nav-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .nav-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Make mobile nav links full-width, comfortably tappable, with separators */
+    .nav-menu li { width: 100%; }
+    .nav-menu li + li { border-top: 1px solid var(--border-color); }
+    .nav-menu a {
+        display: block;
+        padding: 12px 18px;
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+
+    /* Backdrop behind the slide-in menu to dim content and capture taps */
+    .nav-backdrop {
+        position: fixed;
+        top: var(--header-h, 80px);
         left: 0;
-    }
-
-    .nav-toggle {
-        display: flex;
-    }
-
-    .nav-toggle.active .bar:nth-child(2) {
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.25);
         opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 2500; /* below menu, above content */
     }
-
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+    .nav-backdrop.active { opacity: 1; pointer-events: auto; }
     
     .hero h1 {
         font-size: 2.5rem;
@@ -2209,14 +2232,9 @@ nav menu a {
 }
 
 @media (max-width: 480px) {
-    .nav-container {
-        padding: 0 var(--spacing-md);
-    }
-    
-    .hero h1 {
+    .nav-container { padding: 0 var(--spacing-md); }
     .footer-links { text-align: center; }
-        font-size: 2rem;
-    }
+    .hero h1 { font-size: 2rem; }
     
     .hero p {
         font-size: 1rem;

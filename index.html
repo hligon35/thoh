@@ -62,6 +62,12 @@
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- SEO: Canonical URL to prevent duplicate content issues -->
+        <link rel="canonical" href="https://thehouseofhumanity.org/" />
+        <!-- PWA: Site web manifest for installability and metadata -->
+        <link rel="manifest" href="/site.webmanifest" />
+        <!-- Favicon for browser tabs and bookmarking -->
+        <link rel="icon" type="image/png" href="/images/THOHlogo.jpg" />
         <noscript
             ><link
                 rel="stylesheet"
@@ -207,12 +213,13 @@
             <nav class="navbar" role="navigation" aria-label="Main">
                 <div class="nav-flex">
                     <div class="logo">
-                        <img
-                            src="images/The House of Humanity-logo3.jpg"
+                                    <img
+                            src="images/THOHlogo.jpg"
                             alt="The House Of Humanity Logo"
                             class="logo-img"
                             width="100"
-                            height="100"
+                                        height="100"
+                                        decoding="async"
                         />
                         <h1>The House Of Humanity</h1>
                     </div>
@@ -259,12 +266,14 @@
         <!-- Hero Section -->
         <main>
             <section id="home" class="hero">
-                <img
-                    src="images/The House of Humanity-logo3.jpg"
+                        <img
+                    src="images/THOHlogo.jpg"
                     alt="The House of Humanity Logo"
                     width="320"
                     height="320"
-                    loading="eager"
+                            loading="eager"
+                            decoding="async"
+                            fetchpriority="high"
                 />
                 <div class="hero-content">
                     <p>
@@ -312,12 +321,13 @@
                     </p>
                 </div>
                 <div class="about-image">
-                    <img
+                                <img
                         src="images/BridgetCharles.jpeg"
                         alt="Founder Bridget Charles"
                         width="340"
                         height="340"
-                        loading="lazy"
+                                    loading="lazy"
+                                    decoding="async"
                     />
                 </div>
             </section>
@@ -330,12 +340,13 @@
                 </div>
                 <div class="services-grid-stack grid-3col">
                     <article class="service-card">
-                        <img
+                                    <img
                             src="images/shelter.jpg"
                             alt="Emergency Shelter Assistance"
                             width="220"
                             height="140"
-                            loading="lazy"
+                                        loading="lazy"
+                                        decoding="async"
                         />
                         <h3>Emergency Shelter Assistance</h3>
                         <p>
@@ -344,12 +355,13 @@
                         </p>
                     </article>
                     <article class="service-card">
-                        <img
+                                    <img
                             src="images/cannedgood1.jpg"
                             alt="Food donations - Essential items for families"
                             width="220"
                             height="140"
-                            loading="lazy"
+                                        loading="lazy"
+                                        decoding="async"
                         />
                         <h3>Food Donations</h3>
                         <p>
@@ -368,12 +380,13 @@
                         </div>
                     </article>
                     <article class="service-card">
-                        <img
+                                    <img
                             src="images/wellness.jpg"
                             alt="Well-being Programs"
                             width="220"
                             height="140"
-                            loading="lazy"
+                                        loading="lazy"
+                                        decoding="async"
                         />
                         <h3>Well-being Programs</h3>
                         <p>
@@ -383,12 +396,13 @@
                         </p>
                     </article>
                     <article class="service-card">
-                        <img
+                                    <img
                             src="images/creditrepair.jpg"
                             alt="Credit Repair Services"
                             width="220"
                             height="140"
-                            loading="lazy"
+                                        loading="lazy"
+                                        decoding="async"
                         />
                         <h3>Credit Repair Services</h3>
                         <p>
@@ -405,12 +419,13 @@
                         >
                     </article>
                     <article class="service-card">
-                        <img
+                                    <img
                             src="images/domestic.jpg"
                             alt="Support Services"
                             width="220"
                             height="140"
-                            loading="lazy"
+                                        loading="lazy"
+                                        decoding="async"
                         />
                         <h3>Support Services</h3>
                         <p>
@@ -419,12 +434,13 @@
                         </p>
                     </article>
                     <article class="service-card">
-                        <img
+                                    <img
                             src="images/holiday.jpg"
                             alt="Holiday programs - Special seasonal food distributions"
                             width="300"
                             height="200"
-                            loading="lazy"
+                                        loading="lazy"
+                                        decoding="async"
                         />
                         <h3>Holiday Programs</h3>
                         <p>
@@ -462,12 +478,13 @@
                         <a href="#contact" class="btn btn-primary">Sign Up to Volunteer</a>
                     </div>
                     <div class="volunteer-img-wrap">
-                        <img
+                                    <img
                             src="images/GroupRun4Humanity.jpg"
                             alt="Volunteers at The House of Humanity"
                             width="100%"
                             height="auto"
                             loading="lazy"
+                                        decoding="async"
                             class="volunteer-img"
                         />
                     </div>
@@ -485,10 +502,11 @@
                 </div>
                 <div class="events-list events-list-grid">
                     <div class="event-card">
-                        <img
+                                    <img
                             src="images/Upcoming event.png"
                             alt="Upcoming Event"
                             class="event-image-clickable"
+                                        decoding="async"
                         />
                         <h3>Car and Bike Show</h3>
                         <p>September 13, 2025</p>
@@ -540,10 +558,11 @@
                                     target="_blank"
                                     rel="noopener"
                                 >
-                                    <img
+                                                        <img
                                         src="images/Paypal_QR_Code.jfif"
                                         alt="PayPal QR"
                                         class="payment-option-img"
+                                                            decoding="async"
                                     />
                                 </a>
                                 <p class="payment-option-note">Scan to Pay</p>
@@ -552,10 +571,11 @@
                             <div class="payment-option-card">
                                 <div class="payment-card-accent"></div>
                                 <h3 class="payment-option-title">Cash</h3>
-                                <img
+                                                <img
                                     src="images/donations.jpg"
                                     alt="Cash Payment"
                                     class="payment-option-img payment-option-img--small"
+                                                    decoding="async"
                                 />
                                 <p class="payment-option-note">Give cash at our location or events</p>
                             </div>
@@ -563,10 +583,11 @@
                             <div class="payment-option-card">
                                 <div class="payment-card-accent"></div>
                                 <h3 class="payment-option-title">Checks</h3>
-                                <img
+                                                <img
                                     src="images/check.jpg"
                                     alt="Check Payment"
                                     class="payment-option-img payment-option-img--small"
+                                                    decoding="async"
                                 />
                                 <p class="payment-option-note">
                                     Make checks payable to The House of Humanity
@@ -662,15 +683,16 @@
                                 <button type="submit" class="btn btn-primary">Send</button>
                             </div>
                             <!-- Inline confirmation / error message -->
-                            <div id="formMessage"></div>
-                            <iframe
+                                            <div id="formMessage"></div>
+                                            <iframe
                                 name="formFrame"
                                 id="formFrame"
                                 title="hidden form submission"
                                 class="hidden"
                                 hidden
                                 tabindex="-1"
-                                aria-hidden="true"
+                                                aria-hidden="true"
+                                                loading="lazy"  
                             ></iframe>
                         </form>
                     </div>
@@ -681,12 +703,23 @@
         <!-- Footer -->
         <!-- Event Image Modal Overlay -->
         <div id="eventImageModal" class="event-image-modal">
-            <img
+                    <img
                 id="eventModalImg"
                 src="images/Upcoming event.png"
                 alt="Upcoming Event Enlarged"
+                        decoding="async"
             />
         </div>
+                <!-- SEO: Structured data for Organization -->
+                <script type="application/ld+json">
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "The House Of Humanity",
+                        "url": "https://thehouseofhumanity.org/",
+                    "logo": "https://thehouseofhumanity.org/images/The%20House%20of%20Humanity-logo3.jpg"
+                    }
+                </script>
         <script defer>
             // Event image click-to-enlarge logic
             document.addEventListener('DOMContentLoaded', function () {
@@ -706,18 +739,16 @@
         </script>
         <footer class="footer">
             <div class="footer-main">
-                <!-- <div style="width:auto; flex-basis:auto; max-width:120px; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:12px; align-items:center; justify-items:center;">
-                                <a href="https://youtube.com/thehouseofhumanity" aria-label="YouTube" target="_blank" rel="noopener"><img src="images/SocialIcons/Youtube.png" alt="YouTube" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                                <a href="https://twitter.com/thehouseofhumanity" aria-label="X" target="_blank" rel="noopener"><img src="images/SocialIcons/XSocialIcon.png" alt="X" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                                <a href="https://instagram.com/thehouseofhumanity" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                                <a href="https://linkedin.com/company/thehouseofhumanity" aria-label="LinkedIn" target="_blank" rel="noopener"><img src="images/SocialIcons/Linkedin.png" alt="LinkedIn" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                        </div> -->
                 <div>
                     <h3>The House Of Humanity</h3>
                     <p>
                         Serving our community with dignity, respect, and compassion. No one
                         should go hungry.
                     </p>
+                    <div style="width:auto; flex-basis:auto; max-width:120px; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:12px; align-items:center; justify-items:center; margin:10px auto 0;">
+                        <a href="https://instagram.com/thehouseofhumanity_" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                        <a href="https://facebook.com/thehouseofhumanity" aria-label="Facebook" target="_blank" rel="noopener"><img src="images/SocialIcons/Facebook.png" alt="Facebook" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                    </div>
                 </div>
 
                 <nav class="footer-links" aria-label="Footer">
