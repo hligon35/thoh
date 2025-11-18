@@ -137,6 +137,14 @@
   margin-bottom: 0.5rem;
   text-align: center;
 }
+/* Make the small "Click to enlarge" caption half the default h6 size */
+.event-card h6 {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #666;
+    margin: 0 0 0.5rem 0;
+    font-weight: 400;
+}
 /* Footer: keep spacing controlled by base styles; avoid over-resetting margins/padding */
 /* Service Cards 3-2 Grid Layout */
 .services-grid-stack {
