@@ -1,76 +1,86 @@
 // Service Worker for The House of Humanity
 // Provides offline functionality and caching for better performance
 
-const CACHE_NAME = 'thoh-v1.2';
+const CACHE_NAME = 'thoh-v1.3';
+
+// Cache only known-present, high-value assets.
+// Avoid caching missing URLs because cache.addAll() fails the install if any request 404s.
 const urlsToCache = [
     '/',
     '/index.html',
-    '/who-we-are.html',
-    '/meet-the-founder.html',
-    '/donate-now.html',
-    '/contact-us.html',
+    '/404.html',
     '/styles.css',
     '/script.js',
-    '/critical.css',
-    '/images/The House of Humanity-logo3.jpg',
-    '/images/HouseofHumanityLogo2.png',
     '/site.webmanifest',
-    '/favicon.ico'
+    '/images/THOHlogo.jpg'
 ];
 
 // Install event - cache resources
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
+        (async () => {
+            const cache = await caches.open(CACHE_NAME);
+            await Promise.all(
+                urlsToCache.map((url) => cache.add(url).catch(() => undefined))
+            );
+            self.skipWaiting();
+        })()
     );
 });
 
 // Fetch event - serve from cache with network fallback
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Return cached version or fetch from network
-                if (response) {
-                    return response;
+self.addEventListener('fetch', (event) => {
+    const req = event.request;
+
+    // Only handle safe, cacheable requests.
+    if (req.method !== 'GET') return;
+
+    const url = new URL(req.url);
+    if (url.origin !== self.location.origin) return;
+
+    // For navigations, try network first (fresh content), then fall back.
+    if (req.mode === 'navigate') {
+        event.respondWith(
+            (async () => {
+                try {
+                    const networkResp = await fetch(req);
+                    const cache = await caches.open(CACHE_NAME);
+                    cache.put('/index.html', networkResp.clone()).catch(() => undefined);
+                    return networkResp;
+                } catch (_) {
+                    const cached = await caches.match('/index.html');
+                    return cached || caches.match('/404.html');
                 }
+            })()
+        );
+        return;
+    }
 
-                return fetch(event.request).then(response => {
-                    // Check if valid response
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
-                        return response;
-                    }
-
-                    // Clone the response
-                    const responseToCache = response.clone();
-
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(event.request, responseToCache);
-                        });
-
-                    return response;
-                });
-            })
+    // For static assets, use cache-first.
+    event.respondWith(
+        (async () => {
+            const cached = await caches.match(req);
+            if (cached) return cached;
+            const resp = await fetch(req);
+            // Cache successful same-origin responses.
+            if (resp && resp.status === 200) {
+                const cache = await caches.open(CACHE_NAME);
+                cache.put(req, resp.clone()).catch(() => undefined);
+            }
+            return resp;
+        })()
     );
 });
 
 // Activate event - clean up old caches
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
-                        return caches.delete(cacheName);
-                    }
-                })
+        (async () => {
+            const cacheNames = await caches.keys();
+            await Promise.all(
+                cacheNames.map((name) => (name !== CACHE_NAME ? caches.delete(name) : undefined))
             );
-        })
+            self.clients.claim();
+        })()
     );
 });

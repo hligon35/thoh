@@ -9,7 +9,7 @@
         />
         <meta
             name="description"
-            content="The House Of Humanity - Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need."
+            content="The House Of Humanity - Restoring dignity and renewing dreams for families in need. Serving Richmond, VA and surrounding communities."
         />
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#02c9aa" />
@@ -28,11 +28,11 @@
         />
         <meta
             property="og:description"
-            content="Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need."
+            content="Restoring dignity and renewing dreams for families in need. Serving Richmond, VA and surrounding communities."
         />
         <meta
             property="og:image"
-            content="https://thehouseofhumanity.org/images/meta.jpg"
+            content="https://thehouseofhumanity.org/images/THOHlogo.jpg"
         />
 
         <!-- Twitter -->
@@ -44,11 +44,11 @@
         />
         <meta
             property="twitter:description"
-            content="Fighting hunger and building hope in our community. Join us in providing nutritious food and essential support to families in need."
+            content="Restoring dignity and renewing dreams for families in need. Serving Richmond, VA and surrounding communities."
         />
         <meta
             property="twitter:image"
-            content="https://thehouseofhumanity.org/images/meta.jpg"
+            content="https://thehouseofhumanity.org/images/THOHlogo.jpg"
         />
 
         <title>The House Of Humanity -  Restoring Dignity and Renewing Dreams</title>
@@ -69,7 +69,7 @@
         <!-- Favicon for browser tabs and bookmarking -->
         <link rel="icon" type="image/png" href="/images/THOHlogo.jpg" />
         <!-- Apple touch icon for iOS home screen -->
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/THOHlogo.png" />
         <noscript
             ><link
                 rel="stylesheet"
@@ -211,6 +211,7 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         <header class="header">
             <nav class="navbar" role="navigation" aria-label="Main">
                 <div class="nav-flex">
@@ -223,7 +224,7 @@
                                         height="100"
                                         decoding="async"
                         />
-                        <h1>The House Of Humanity</h1>
+                        <span class="logo-title">The House Of Humanity</span>
                     </div>
                     <div class="nav-menu-flex">
                         <ul class="nav-menu" id="nav-menu" role="menubar">
@@ -266,8 +267,9 @@
         </header>
 
         <!-- Hero Section -->
-        <main>
+        <main id="main-content" tabindex="-1">
             <section id="home" class="hero">
+                        <h1 class="sr-only">The House Of Humanity</h1>
                         <img
                     src="images/THOHlogo.jpg"
                     alt="The House of Humanity Logo"
@@ -296,11 +298,11 @@
             <!-- About Section -->
             <section id="about" class="about-section">
                 <div class="about-text text-center">
-                    <h1 class="text-center">About The House of Humanity</h1>
+                    <h2 class="text-center">About The House of Humanity</h2>
                     <p class="subtitle text-center">
                         Restoring dignity and renewing dreams for families in need
                     </p>
-                    <h2 class="text-center">Our Mission</h2>
+                    <h3 class="text-center">Our Mission</h3>
                     <p class="text-center">
                         Our mission is clear and unchanging: Renewing Dreams, Restoring
                         Dignity. We strive to be a cornerstone in the lives of homeless
@@ -313,7 +315,7 @@
                         programs necessary to achieve their goals for survival and long-term
                         stability.
                     </p>
-                    <h2 class="text-center">Our Vision</h2>
+                    <h3 class="text-center">Our Vision</h3>
                     <p class="text-center">
                         We envision a future in which everyone, regardless of circumstance,
                         has a place to call home—a safe haven where aspirations may be
@@ -461,6 +463,7 @@
                             width="100%"
                             height="auto"
                             controls
+                            preload="metadata"
                             poster="images/GroupRun4Humanity.jpg"
                             class="volunteer-video"
                         >
@@ -504,7 +507,7 @@
                 </div>
                 <div class="events-list events-list-grid">
                     <div class="event-card">
-                        <img src="images/2026raffle.JPG" alt="2026 Raffle Event" class="event-img" />
+                        <img src="images/2026raffle.JPG" alt="2026 Raffle Event" class="event-img" loading="lazy" decoding="async" />
                         <h3>2026 Raffle Event</h3>
                         <p>
                             Join us for our exciting 2026 Raffle! Support our mission while having a chance to win great prizes.
@@ -578,6 +581,7 @@
                                         alt="PayPal QR"
                                         class="payment-option-img"
                                                             decoding="async"
+                                                            loading="lazy"
                                     />
                                 </a>
                                 <p class="payment-option-note">Scan to Donate</p>
@@ -621,6 +625,7 @@
                         We're here to help and answer any questions you may have about The
                         House of Humanity and our programs.
                     </p>
+                    <p>Serving Richmond, VA and surrounding communities.</p>
                 </div>
                 <div class="contact-form-container">
                     <div class="contact-content">
@@ -645,8 +650,10 @@
                             <input type="hidden" name="PageURL" value="" />
                             <input type="hidden" name="Subject" value="" />
                             <div class="form-group">
+                                <label for="contact-name" class="sr-only">Name</label>
                                 <input
                                     type="text"
+                                    id="contact-name"
                                     name="Name"
                                     placeholder="Your Name"
                                     required
@@ -655,8 +662,10 @@
                                 />
                             </div>
                             <div class="form-group">
+                                <label for="contact-email" class="sr-only">Email</label>
                                 <input
                                     type="email"
+                                    id="contact-email"
                                     name="Email"
                                     placeholder="Your Email"
                                     required
@@ -692,7 +701,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <textarea name="Message" placeholder="Your Message" rows="5"></textarea>
+                                <label for="contact-message" class="sr-only">Message</label>
+                                <textarea id="contact-message" name="Message" placeholder="Your Message" rows="5"></textarea>
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary">Send</button>
@@ -716,14 +726,50 @@
         </main>
 
         <!-- Footer -->
-        <!-- SEO: Structured data for Organization -->
+        <!-- SEO: Structured data (Organization + Website) -->
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "The House Of Humanity",
-                "url": "https://thehouseofhumanity.org/",
-                "logo": "https://thehouseofhumanity.org/images/The%20House%20of%20Humanity-logo3.jpg"
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://thehouseofhumanity.org/#org",
+                        "name": "The House Of Humanity",
+                        "url": "https://thehouseofhumanity.org/",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://thehouseofhumanity.org/images/THOHlogo.jpg"
+                        },
+                        "email": "info@thehouseofhumanity.org",
+                        "telephone": "+1-540-872-1873",
+                        "sameAs": [
+                            "https://instagram.com/thehouseofhumanity_",
+                            "https://facebook.com/thehouseofhumanity"
+                        ],
+                        "areaServed": [
+                            {
+                                "@type": "City",
+                                "name": "Richmond",
+                                "address": { "@type": "PostalAddress", "addressRegion": "VA", "addressCountry": "US" }
+                            }
+                        ],
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "440 Monticello Ave, Ste 1802 PMB 741562",
+                            "addressLocality": "Norfolk",
+                            "addressRegion": "VA",
+                            "postalCode": "23510-2670",
+                            "addressCountry": "US"
+                        }
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://thehouseofhumanity.org/#website",
+                        "url": "https://thehouseofhumanity.org/",
+                        "name": "The House Of Humanity",
+                        "publisher": { "@id": "https://thehouseofhumanity.org/#org" }
+                    }
+                ]
             }
         </script>
         <footer class="footer">
@@ -734,9 +780,13 @@
                         Serving our community with dignity, respect, and compassion. No one
                         should go hungry.
                     </p>
-                    <div style="width:auto; flex-basis:auto; max-width:120px; display:grid; grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(2,1fr); gap:12px; align-items:center; justify-items:center; margin:10px auto 0;">
-                        <a href="https://instagram.com/thehouseofhumanity_" aria-label="Instagram" target="_blank" rel="noopener"><img src="images/SocialIcons/IGicon.png" alt="Instagram" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
-                        <a href="https://facebook.com/thehouseofhumanity" aria-label="Facebook" target="_blank" rel="noopener"><img src="images/SocialIcons/Facebook.png" alt="Facebook" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:4px;"></a>
+                    <div class="social-grid" aria-label="Social media">
+                        <a href="https://instagram.com/thehouseofhumanity_" aria-label="Instagram" target="_blank" rel="noopener">
+                            <img src="images/SocialIcons/IGicon.png" alt="Instagram" class="social-icon" loading="lazy" decoding="async" width="40" height="40">
+                        </a>
+                        <a href="https://facebook.com/thehouseofhumanity" aria-label="Facebook" target="_blank" rel="noopener">
+                            <img src="images/SocialIcons/Facebook.png" alt="Facebook" class="social-icon" loading="lazy" decoding="async" width="40" height="40">
+                        </a>
                     </div>
                 </div>
 

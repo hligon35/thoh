@@ -9,13 +9,13 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "images/HouseofHumanityLogo2.png",
+            "src": "images/THOHlogo.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "images/The House of Humanity-logo3.jpg",
+            "src": "images/THOHlogo.jpg",
             "sizes": "512x512",
             "type": "image/jpeg",
             "purpose": "any"
